@@ -2,7 +2,7 @@
 <html lang="is">
     <head>
         <meta charset="utf-8" />
-        <title>Gervigreind — Háskóli Íslands</title>
+        <title>Gervigreindargrúsk: Getur þú unnið tölvuna?</title>
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <link
             rel="stylesheet"
@@ -21,10 +21,11 @@
     </head>
     <body>
         <div class="reveal">
+            <img class="corner-logo" src="img/hi/hi_blue2.svg" alt="" />
             <div class="slides">
 
                 <!-- TITILL -->
-                <section id="title" data-background-color="#0a0561">
+                <section id="title" data-background-color="#0a0561" data-state="hide-logo">
                     <img
                         class="title-logo"
                         src="img/hi/hi_white.svg"
@@ -44,6 +45,7 @@
                     <!-- MENTIMETER: Hvað er gervigreind? -->
                     <section
                         id="menti-2"
+                        data-state="hide-logo"
                         data-background-iframe="https://www.mentimeter.com/app/presentation/YOUR_ID/embed"
                         data-background-interactive
                     >
@@ -59,6 +61,7 @@
                     <!-- MENTIMETER: Hvar hefur þú séð AI? -->
                     <section
                         id="menti-2"
+                        data-state="hide-logo"
                         data-background-iframe="https://www.mentimeter.com/app/presentation/YOUR_ID/embed"
                         data-background-interactive
                     >
@@ -69,7 +72,7 @@
                 <section>
                     <section id="how-it-works">
                         <h2>Hvernig virkar gervigreind?</h2>
-                        <p>Þú lærðir að þekkja hunda með því að sjá mörg dæmi. </p>
+                        <p>Þú lærðir að þekkja hunda með því að sjá mörg dæmi. Gervigreindin gerir það líka.</p>
                         <div class="step-row">
                             <div class="step-box">
                                 <span class="icon">🖼️</span>
@@ -130,27 +133,98 @@
                 </section>
 
                 <!-- SPUNAGREIND -->
-                <section id="gen-ai">
-                    <h2>Spunagreind</h2>
-                    <!-- content here -->
+                <section>
+                    <section id="gen-ai">
+                        <h2>Spunagreind</h2>
+                        <p>Gervigreind sem <strong>skapar</strong> nýtt efni</p>
+                        <div class="concept-grid concept-grid--3">
+                            <div class="concept-card">
+                                <span class="icon">📝</span>
+                                <h3>Texti</h3>
+                            </div>
+                            <div class="concept-card">
+                                <span class="icon">🎨</span>
+                                <h3>Myndir</h3>
+                            </div>
+                            <div class="concept-card">
+                                <span class="icon">🎵</span>
+                                <h3>Tónlist</h3>
+                            </div>
+                            <div class="concept-card">
+                                <span class="icon">💻</span>
+                                <h3>Kóði</h3>
+                            </div>
+                            <div class="concept-card">
+                                <span class="icon">🎬</span>
+                                <h3>Myndbönd</h3>
+                            </div>
+                            <div class="concept-card">
+                                <span class="icon">🗣️</span>
+                                <h3>Rödd</h3>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- LLM -->
+                    <section id="llm">
+                        <h2>Stór tungumálalíkön (LLM)</h2>
+                        <p><strong>LLM = Large Language Model</strong>: líkan þjálfað á gríðarlegu magni texta</p>
+                        <div class="step-row">
+                            <div class="step-box">
+                                <span class="icon">📚</span>
+                                <p><strong>Texti</strong><br />Milljarðar setninga af netinu, úr bókum og greinum</p>
+                            </div>
+                            <div class="step-arrow">→</div>
+                            <div class="step-box">
+                                <span class="icon">🔁</span>
+                                <p><strong>Þjálfun</strong><br />Spáir fyrir um næsta orð aftur og aftur þar til það er rétt</p>
+                            </div>
+                            <div class="step-arrow">→</div>
+                            <div class="step-box">
+                                <span class="icon">🧠</span>
+                                <p><strong>Líkan</strong><br />Skilur samhengi, málfræði og merkingu</p>
+                            </div>
+                            <div class="step-arrow">→</div>
+                            <div class="step-box">
+                                <span class="icon">💬</span>
+                                <p><strong>Svarar</strong><br />Myndar setningar sem eiga við samhengið</p>
+                            </div>
+                        </div>
+                        <div class="highlight-box">
+                            <strong>Dæmi:</strong> ChatGPT, Claude og Gemini eru öll LLM. Þau hafa "lesið" meira en nokkur manneskja gæti lesið á ævinni!
+                        </div>
+                    </section>
                 </section>
 
                 <!-- SIÐFRÆÐI -->
                 <section id="ethics">
                     <h2>Siðfræði og öryggi</h2>
-                    <!-- content here -->
-                </section>
-
-                <!-- MENTIMETER: Umræðuspurning -->
-                <section
-                    id="menti-3"
-                    data-background-iframe="https://www.mentimeter.com/app/presentation/YOUR_ID/embed"
-                    data-background-interactive
-                >
+                    <div class="concept-grid">
+                        <div class="concept-card">
+                            <span class="icon">🎭</span>
+                            <h3>Blekkingar og ímyndun</h3>
+                            <p>Hvernig veistu hvað er raunverulegt?</p>
+                        </div>
+                        <div class="concept-card">
+                            <span class="icon">⚖️</span>
+                            <h3>Hlutdrægni</h3>
+                            <p>Hlutdræg gögn gefa hlutdrægar niðurstöður</p>
+                        </div>
+                        <div class="concept-card">
+                            <span class="icon">🔒</span>
+                            <h3>Friðhelgi</h3>
+                            <p>Gögnin þín eru notuð til að þjálfa líkön</p>
+                        </div>
+                        <div class="concept-card">
+                            <span class="icon">❓</span>
+                            <h3>Ábyrgð</h3>
+                            <p>Hver ber ábyrgðina þegar eitthvað fer úrskeiðis?</p>
+                        </div>
+                    </div>
                 </section>
 
                 <!-- LOKAGLÆRA -->
-                <section id="closing" data-background-color="#0a0561">
+                <section id="closing" data-background-color="#0a0561" data-state="hide-logo">
                     <img
                         class="title-logo"
                         src="img/hi/hi_white.svg"
