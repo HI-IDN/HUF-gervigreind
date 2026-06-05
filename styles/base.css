@@ -1,0 +1,434 @@
+@import "./colors.css";
+@import url("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
+/* ═══════════════════════════════════════════════════════
+   REVEAL.JS VARIABLE OVERRIDES
+═══════════════════════════════════════════════════════ */
+
+.reveal {
+    --r-link-color: var(--primary);
+    --r-link-color-hover: var(--primary-hover);
+    --r-selection-background-color: var(--primary);
+    --r-heading-color: var(--primary);
+    --r-main-color: var(--text);
+    --r-background-color: var(--bg);
+    --r-main-font: "Atkinson Hyperlegible", sans-serif;
+    --r-heading-font: "Atkinson Hyperlegible", sans-serif;
+    --r-progress-color: var(--secondary); /* ← progress bar */
+    --r-controls-color: var(--secondary); /* ← nav arrows  */
+}
+
+/* ═══════════════════════════════════════════════════════
+   TYPOGRAPHY
+═══════════════════════════════════════════════════════ */
+
+.reveal section h1 {
+    font-size: 2.6em;
+}
+
+.reveal section p,
+.reveal section ol,
+.reveal section ul {
+    font-size: 0.7em;
+    line-height: 1.4;
+}
+
+.reveal pre code {
+    font-size: 0.9em;
+    background-color: var(--bg-light);
+    display: block;
+    padding-right: 2.25rem;
+}
+
+.reveal code {
+    background: var(--bg-light);
+    padding: 0.1em 0.4em;
+    border-radius: 4px;
+    color: var(--primary);
+}
+
+.reveal .big-q {
+    font-size: 1.1em;
+    color: var(--primary);
+    font-style: italic;
+    margin: 0.6rem 0 1rem;
+}
+
+/* ═══════════════════════════════════════════════════════
+   TITLE & CLOSING SLIDES (dark background)
+═══════════════════════════════════════════════════════ */
+
+.reveal #title h1,
+.reveal #title p,
+.reveal #closing h2,
+.reveal #closing p {
+    color: var(--text-light);
+}
+
+.reveal #title .big-q,
+.reveal #closing .big-q {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.reveal #title .tag,
+.reveal #closing .tag {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.5);
+    color: var(--text-light);
+}
+
+.title-logo {
+    width: 220px;
+    height: auto;
+    margin-bottom: 1.2rem;
+}
+
+.reveal .title-subtitle {
+    font-size: 0.8em !important;
+    color: rgba(255, 255, 255, 0.8) !important;
+    margin: 0 0 0.4em !important;
+}
+
+.reveal .title-meta {
+    font-size: 0.55em !important;
+    color: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* ═══════════════════════════════════════════════════════
+   IMAGES
+═══════════════════════════════════════════════════════ */
+
+.medium-image-wrapper {
+    text-align: center;
+    margin: 0.2em 0;
+}
+
+.medium-image {
+    width: 60%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.feature-icon {
+    font-size: 4.5em;
+    line-height: 1;
+    text-align: center;
+    padding-top: 0.5rem;
+}
+
+.reveal .feature-note {
+    font-size: 0.55em;
+    color: var(--dark-grey);
+    margin-top: 0.4rem !important;
+    text-align: center;
+}
+
+/* ═══════════════════════════════════════════════════════
+   LAYOUT — TWO COLUMN
+═══════════════════════════════════════════════════════ */
+
+.two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 0.9rem;
+    text-align: left;
+}
+
+.reveal .two-col h3 {
+    font-size: 0.72em;
+    margin: 0 0 0.4em;
+}
+
+.reveal .two-col ul {
+    font-size: 0.6em;
+    line-height: 1.75;
+    margin: 0;
+}
+
+.col-box {
+    border: 1px solid var(--grey);
+    border-radius: 12px;
+    padding: 1rem;
+}
+
+.col-box--primary {
+    border-color: var(--primary);
+}
+
+.col-box--secondary {
+    border-color: var(--secondary);
+}
+
+/* ═══════════════════════════════════════════════════════
+   CONCEPT GRID
+═══════════════════════════════════════════════════════ */
+
+.concept-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.9rem;
+    margin-top: 1rem;
+}
+
+.concept-grid--3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.concept-card {
+    background: var(--bg-light);
+    border: 1px solid var(--grey);
+    border-radius: 12px;
+    padding: 0.9rem 0.8rem;
+    text-align: center;
+}
+
+.concept-card .icon {
+    font-size: 1.8em;
+    margin-bottom: 0.3em;
+    display: block;
+}
+
+.reveal .concept-card h3 {
+    font-size: 0.75em;
+    margin: 0 0 0.25em;
+    color: var(--primary);
+}
+
+.reveal .concept-card p {
+    font-size: 0.58em;
+    color: var(--dark-grey);
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* ═══════════════════════════════════════════════════════
+   LIFE GRID (3-column icon cards)
+═══════════════════════════════════════════════════════ */
+
+.life-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.7rem;
+    margin-top: 1rem;
+}
+
+.life-card {
+    background: var(--bg-light);
+    border: 1px solid var(--grey);
+    border-radius: 12px;
+    padding: 0.7rem 0.5rem;
+    text-align: center;
+}
+
+.life-card .icon {
+    font-size: 1.6em;
+    display: block;
+}
+
+.reveal .life-card p {
+    font-size: 0.52em;
+    margin: 0.3em 0 0;
+    color: var(--dark-grey);
+    line-height: 1.3;
+}
+
+/* ═══════════════════════════════════════════════════════
+   STEP ROW (horizontal process flow)
+═══════════════════════════════════════════════════════ */
+
+.step-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1.2rem;
+}
+
+.step-box {
+    background: var(--bg-light);
+    border: 1px solid var(--grey);
+    border-radius: 12px;
+    padding: 0.8rem 0.9rem;
+    text-align: center;
+    flex: 1;
+}
+
+.step-box .icon {
+    font-size: 1.5em;
+    display: block;
+}
+
+.reveal .step-box p {
+    font-size: 0.52em;
+    margin: 0.3em 0 0;
+    color: var(--text);
+    line-height: 1.3;
+}
+
+.step-arrow {
+    font-size: 1.4em;
+    color: var(--primary);
+    padding: 0 0.4rem;
+    flex-shrink: 0;
+}
+
+/* ═══════════════════════════════════════════════════════
+   HIGHLIGHT BOX
+═══════════════════════════════════════════════════════ */
+
+.reveal .highlight-box {
+    background: var(--secondary-light);
+    border: 1px solid var(--secondary);
+    border-radius: 12px;
+    padding: 0.85rem 1.1rem;
+    margin: 0.9rem 0;
+    font-size: 0.68em;
+    line-height: 1.5;
+    color: var(--text);
+}
+
+/* ═══════════════════════════════════════════════════════
+   ETHICS CARDS
+═══════════════════════════════════════════════════════ */
+
+.ethics-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.8rem;
+    margin-top: 0.9rem;
+}
+
+.ethics-card {
+    background: var(--bg-light);
+    border-left: 3px solid var(--primary);
+    border-radius: 0 10px 10px 0;
+    padding: 0.8rem 0.9rem;
+}
+
+.reveal .ethics-card h3 {
+    font-size: 0.7em;
+    margin: 0 0 0.25em;
+    color: var(--primary);
+}
+
+.reveal .ethics-card p {
+    font-size: 0.58em;
+    margin: 0;
+    color: var(--dark-grey);
+    line-height: 1.45;
+}
+
+.ethics-card--danger {
+    border-left-color: var(--secondary);
+    background: var(--secondary-light);
+}
+
+.reveal .ethics-card--danger h3 {
+    color: var(--secondary);
+}
+
+/* ═══════════════════════════════════════════════════════
+   TAG CLOUD
+═══════════════════════════════════════════════════════ */
+
+.tag-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.tag {
+    background: var(--bg-light);
+    border: 1px solid var(--primary);
+    border-radius: 20px;
+    padding: 0.3em 0.85em;
+    font-size: 0.58em;
+    color: var(--primary);
+}
+
+/* ═══════════════════════════════════════════════════════
+   HORIZONTAL TIMELINE
+═══════════════════════════════════════════════════════ */
+
+.timeline-h {
+    display: flex;
+    align-items: flex-start;
+    position: relative;
+    margin-top: 2.5rem;
+}
+
+.timeline-h::before {
+    content: "";
+    position: absolute;
+    top: 1.8rem;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--primary);
+    opacity: 0.35;
+}
+
+.timeline-h-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.timeline-h-item .year {
+    font-size: 0.55em;
+    font-weight: bold;
+    color: var(--primary);
+    order: -1;
+}
+
+.timeline-h-item .dot {
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: var(--primary);
+    z-index: 1;
+    flex-shrink: 0;
+}
+
+.timeline-h-item .label {
+    font-size: 0.48em;
+    text-align: center;
+    color: var(--dark-grey);
+    line-height: 1.35;
+}
+
+/* ═══════════════════════════════════════════════════════
+   REVEAL.JS UI — PROGRESS BAR & CONTROLS
+═══════════════════════════════════════════════════════ */
+
+.reveal .progress span {
+    background-color: var(--secondary);
+}
+
+.reveal .controls {
+    color: var(--secondary);
+}
+
+/* ═══════════════════════════════════════════════════════
+   TEXT UTILITY CLASSES
+═══════════════════════════════════════════════════════ */
+
+.reveal .text--primary {
+    color: var(--primary);
+}
+
+.reveal .text--secondary {
+    color: var(--secondary);
+}
+
+.reveal .text--muted {
+    color: var(--dark-grey);
+}
+
+.reveal .text--light {
+    color: rgba(255, 255, 255, 0.65);
+}

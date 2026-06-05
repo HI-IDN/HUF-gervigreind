@@ -1,0 +1,22 @@
+:root {
+    --primary: #10099f;
+    --primary-hover: #0a0561;
+    --bg: #fcfcfc;
+    --bg-dark: #0a0561;
+    --bg-light: #e5edff;
+    --bg-green: #ebf9ee;
+    --text: #1c1c1c;
+    --text-light: #ffffff;
+    --secondary: #d61f69;
+    --secondary-hover: #a1174f;
+    --secondary-light: #f4b8ce;
+    --dark-grey: #707070;
+    --grey: #d3d3d3;
+}
+
+/* Reveal.js theme overrides */
+.reveal {
+    --r-link-color: var(--primary);
+    --r-link-color-hover: var(--primary-hover);
+    --r-selection-background-color: var(--primary);
+}
