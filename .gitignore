@@ -1,0 +1,38 @@
+# IDE / editor
+.idea/
+.vscode/
+*.code-workspace
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Quarto / RevealJS render output
+.quarto/
+_freeze/
+_site/
+*_files/
+*.html
+!index.html
+
+# Local preview / scratch output
+_inspo_preview/
+outputs/
+
+# Python / test caches used by local tooling
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Node / browser tooling
+node_modules/
+playwright-report/
+test-results/
+
+# Logs and local environment files
+*.log
+.env
+.env.*
