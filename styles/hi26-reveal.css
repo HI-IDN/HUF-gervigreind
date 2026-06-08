@@ -31,6 +31,45 @@
   --r-controls-color: var(--blue);
 }
 
+.reveal .backgrounds {
+  background: var(--paper);
+}
+
+.reveal .slide-background {
+  background-color: var(--paper) !important;
+  overflow: hidden;
+}
+
+.reveal .slide-background::after {
+  content: "";
+  position: absolute;
+  right: -230px;
+  top: 96px;
+  width: 820px;
+  height: 820px;
+  background-color: var(--panel);
+  -webkit-mask-image: url("../img/hi/hi_blue.svg");
+  mask-image: url("../img/hi/hi_blue.svg");
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  pointer-events: none;
+}
+
+.reveal .slide-background.title-slide,
+.reveal .slide-background.focus-slide {
+  background-color: var(--teal) !important;
+}
+
+.reveal .slide-background.title-slide::after,
+.reveal .slide-background.focus-slide::after {
+  content: "";
+  background-color: var(--blue);
+}
+
 .reveal a {
   color: var(--red);
   text-decoration-color: var(--red);
@@ -133,6 +172,11 @@
   z-index: 30 !important;
 }
 
+.hide-logo .slide-logo,
+.hide-logo .footer {
+  display: none !important;
+}
+
 
 /* ═══════════════════════════════════════════════════════
    MYND-SPLIT: texti vinstra (80%) + mynd hægra (20%) full height
@@ -188,8 +232,23 @@
 }
 
 .reveal .controls {
-  color: var(--blue);
+  color: var(--blue) !important;
   z-index: 80;
+}
+
+.reveal .controls button,
+.reveal .controls button:hover,
+.reveal .controls button:focus,
+.reveal .controls .navigate-left,
+.reveal .controls .navigate-right,
+.reveal .controls .navigate-up,
+.reveal .controls .navigate-down {
+  color: var(--blue) !important;
+}
+
+.reveal .controls .controls-arrow::before,
+.reveal .controls .controls-arrow::after {
+  background-color: var(--blue) !important;
 }
 
 /* Felur corner-logo á titil- og sérstökum glærum */
@@ -232,44 +291,30 @@
 }
 
 .title-slide,
-.section-break {
+.section-break,
+.focus-slide {
   position: relative;
   overflow: hidden;
-  background: var(--teal);
+  background: transparent;
   color: var(--blue);
+  box-sizing: border-box;
+  min-height: 100% !important;
 }
 
 .title-slide::before,
 .section-break::before {
-  content: "";
-  position: absolute;
-  inset: 0 0 auto 0;
-  height: 58px;
-  background-color: var(--white);
-  background-image: url("../img/hi/hi_named_logo-is.svg");
-  background-repeat: no-repeat;
-  background-position: 18px 50%;
-  background-size: auto 42px;
-  z-index: 5;
+  content: none;
 }
 
 .title-slide::after,
-.section-break::after {
-  content: "";
-  position: absolute;
-  right: -190px;
-  top: 42px;
-  width: 870px;
-  height: 870px;
-  background-image: url("../img/hi/hi_blue.svg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  z-index: 0;
+.section-break::after,
+.focus-slide::after {
+  content: none;
 }
 
 .title-slide > *,
-.section-break > * {
+.section-break > *,
+.focus-slide > * {
   position: relative;
   z-index: 2;
 }
@@ -280,7 +325,7 @@
   align-items: flex-start;
   justify-content: center;
   text-align: left;
-  padding: 112px 72px 72px !important;
+  padding: 88px 72px 72px !important;
 }
 
 .custom-title {
@@ -289,14 +334,14 @@
   align-items: flex-start;
   justify-content: center;
   text-align: left;
-  padding: 112px 72px 72px !important;
+  padding: 88px 72px 72px !important;
 }
 
 .title-theme {
   display: table;
   background: rgba(255, 255, 255, .90);
   color: var(--blue);
-  font-size: 24px;
+  font-size: 28px;
   font-weight: 800;
   letter-spacing: .02em;
   line-height: 1.1;
@@ -309,12 +354,12 @@
   display: table;
   background: rgba(255, 255, 255, .94);
   color: var(--blue) !important;
-  font-size: 58px !important;
+  font-size: 66px !important;
   font-weight: 900;
   line-height: 1.02 !important;
-  max-width: 790px;
+  max-width: min(940px, 58vw);
   padding: .12em .32em .18em;
-  margin: 0 0 16px !important;
+  margin: 0 0 18px !important;
   text-transform: none;
 }
 
@@ -322,18 +367,40 @@
 .event-meta {
   display: table;
   background: rgba(255, 255, 255, .88);
-  color: var(--ink);
-  font-size: 18px;
-  font-weight: 500;
+  color: var(--blue);
+  font-size: 20px;
+  font-weight: 600;
   line-height: 1.45;
   padding: .58em .78em;
   margin-top: 10px;
 }
 
 .title-meta a {
-  color: var(--blue);
+  color: var(--blue) !important;
   text-decoration: none;
-  margin-right: 1em;
+  margin-right: 0;
+}
+
+.title-meta-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.25em;
+  height: 1.25em;
+  margin: 0 0 0 .55em !important;
+  vertical-align: -0.1em;
+}
+
+.title-meta-email {
+  display: inline-flex;
+  align-items: center;
+  gap: .35em;
+  margin-left: .55em !important;
+  white-space: nowrap;
+}
+
+.title-meta-email i {
+  margin-right: 0;
 }
 
 .title-meta a:hover {
@@ -825,7 +892,7 @@
 .menti-login {
   position: relative;
   overflow: hidden;
-  background: var(--teal);
+  background: transparent;
   color: var(--blue);
   display: grid !important;
   grid-template-columns: minmax(0, 1fr) 390px;
@@ -835,31 +902,11 @@
 }
 
 .menti-login::before {
-  content: "";
-  position: absolute;
-  inset: 0 0 auto 0;
-  height: 58px;
-  background-color: var(--white);
-  background-image: url("../img/hi/hi_named_logo-is.svg");
-  background-repeat: no-repeat;
-  background-position: 18px 50%;
-  background-size: auto 42px;
-  z-index: 5;
+  content: none;
 }
 
 .menti-login::after {
-  content: "";
-  position: absolute;
-  right: -260px;
-  top: 30px;
-  width: 760px;
-  height: 760px;
-  background-image: url("../img/hi/hi_blue.svg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  opacity: .16;
-  z-index: 0;
+  content: none;
 }
 
 .menti-login > * {
@@ -914,40 +961,21 @@
 .break {
   position: relative;
   overflow: hidden;
-  background: var(--teal);
+  background: transparent;
   color: var(--blue);
   display: flex !important;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  padding: 112px 72px 72px !important;
+  padding: 88px 72px 72px !important;
 }
 
 .break::before {
-  content: "";
-  position: absolute;
-  inset: 0 0 auto 0;
-  height: 58px;
-  background-color: var(--white);
-  background-image: url("../img/hi/hi_named_logo-is.svg");
-  background-repeat: no-repeat;
-  background-position: 18px 50%;
-  background-size: auto 42px;
-  z-index: 5;
+  content: none;
 }
 
 .break::after {
-  content: "";
-  position: absolute;
-  right: -190px;
-  top: 42px;
-  width: 870px;
-  height: 870px;
-  background-image: url("../img/hi/hi_blue.svg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  z-index: 0;
+  content: none;
 }
 
 .break > * {

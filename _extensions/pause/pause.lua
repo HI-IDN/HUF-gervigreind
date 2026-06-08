@@ -11,6 +11,8 @@ local function format_time(seconds)
   return string.format("%d:%02d", minutes, rest)
 end
 
+local pause_count = 0
+
 return {
   ["pause"] = function(args)
     local raw_seconds = stringify(args[1])
@@ -23,13 +25,15 @@ return {
       )
     end
 
+    pause_count = pause_count + 1
+
     return {
       pandoc.Header(
         2,
         {},
         pandoc.Attr(
-          "",
-          { "break", "countdown-break" },
+          "break-" .. tostring(pause_count),
+          { "focus-slide", "break", "countdown-break" },
           {
             ["data-background-color"] = "#2DD2C0",
             ["data-countdown-seconds"] = tostring(seconds)
@@ -39,8 +43,7 @@ return {
       pandoc.RawBlock(
         "html",
         '<h1>Pása</h1>\n' ..
-        '<div class="countdown-clock" data-countdown-display>' .. format_time(seconds) .. '</div>\n' ..
-        '<p data-countdown-status>Tíminn telur niður</p>'
+        '<div class="countdown-clock" data-countdown-display>' .. format_time(seconds) .. '</div>'
       )
     }
   end
