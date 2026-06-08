@@ -47,7 +47,7 @@ Hann starfar einnig sem verkefnastjóri hjá NýMennt á Menntavísindasviði og
 
 ---
 
-## {#menti-login .focus-slide .menti-login data-background-color="#2DD2C0"}
+## {#menti-login .focus-slide .menti-login}
 
 <div>
 <span class="kicker">Menti</span>
