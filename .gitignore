@@ -12,7 +12,7 @@ desktop.ini
 .quarto/
 _freeze/
 _site/
-*_files/
+index_files/
 *.html
 !index.html
 
