@@ -110,6 +110,69 @@ local function render_card_rows(div, item_renderer, wrapper_class, row_class)
     '<div class="' .. wrapper_class .. '">' .. table.concat(rows, "\n") .. "</div>")
 end
 
+-- Splits a list of inlines at the first bare "|" Str token
+local function split_inlines_at_pipe(inlines)
+  local left, right = {}, {}
+  local found = false
+  for _, inline in ipairs(inlines) do
+    if not found and inline.t == "Str" and inline.text == "|" then
+      found = true
+    elseif not found then
+      table.insert(left, inline)
+    else
+      table.insert(right, inline)
+    end
+  end
+  return left, right, found
+end
+
+-- Renders a list of inlines to HTML, stripping the <p> wrapper Para adds.
+-- Uses pandoc.write (same as render_blocks) so formatting is always correct.
+local function inlines_to_html(inlines)
+  if #inlines == 0 then return "" end
+  local html = pandoc.write(pandoc.Pandoc({ pandoc.Para(inlines) }), "html")
+  html = html:gsub("%s+$", "")           -- trim trailing whitespace/newlines
+  html = html:gsub("^<p>", "")           -- strip opening <p>
+  html = html:gsub("</p>$", "")          -- strip closing </p>
+  return html
+end
+
+-- Trim leading/trailing Space inlines
+local function trim_spaces(inlines)
+  while #inlines > 0 and (inlines[1].t == "Space" or inlines[1].t == "SoftBreak") do
+    table.remove(inlines, 1)
+  end
+  while #inlines > 0 and (inlines[#inlines].t == "Space" or inlines[#inlines].t == "SoftBreak") do
+    table.remove(inlines, #inlines)
+  end
+  return inlines
+end
+
+-- Renders one opposing-arrow row from a list item
+local function oppose_row_html(_, blocks)
+  for _, block in ipairs(blocks) do
+    if block.t == "Para" or block.t == "Plain" then
+      local left_inl, right_inl, found = split_inlines_at_pipe(block.content)
+      if found then
+        local left_html  = inlines_to_html(trim_spaces(left_inl))
+        local right_html = inlines_to_html(trim_spaces(right_inl))
+        return '<div class="oppose-row">' ..
+          '<div class="oppose-arrow oppose-arrow--right">' .. left_html  .. '</div>' ..
+          '<div class="oppose-dot"></div>' ..
+          '<div class="oppose-arrow oppose-arrow--left">'  .. right_html .. '</div>' ..
+          '</div>'
+      end
+    end
+  end
+  -- fallback: full text left, empty right
+  local text = pandoc.utils.stringify(blocks)
+  return '<div class="oppose-row">' ..
+    '<div class="oppose-arrow oppose-arrow--right">' .. html_escape(text) .. '</div>' ..
+    '<div class="oppose-dot"></div>' ..
+    '<div class="oppose-arrow oppose-arrow--left"></div>' ..
+    '</div>'
+end
+
 -- Renders a chevron step (for .steps diagrams)
 local function step_chip_html(index, blocks)
   local text = pandoc.utils.stringify(blocks)
@@ -152,6 +215,34 @@ function Div(div)
     return pandoc.RawBlock("html",
       '<div class="steps-row" style="--steps-count: ' .. tostring(#chips) .. ';">' ..
       table.concat(chips, "") .. "</div>")
+  end
+
+  if has_class(div.classes, "oppose") then
+    local left_label  = (div.attributes and div.attributes["left"])       or "A"
+    local right_label = (div.attributes and div.attributes["right"])      or "B"
+    local left_icon   = div.attributes and div.attributes["left-icon"]
+    local right_icon  = div.attributes and div.attributes["right-icon"]
+
+    local li = left_icon  and ('<i class="fa-solid fa-' .. left_icon  .. ' fa-fw"></i> ') or ""
+    local ri = right_icon and (' <i class="fa-solid fa-' .. right_icon .. ' fa-fw"></i>') or ""
+
+    local header = '<div class="oppose-header">' ..
+      '<div class="oppose-head oppose-head--right">' .. li .. html_escape(left_label)  .. '</div>' ..
+      '<div class="oppose-head oppose-head--center">VS</div>' ..
+      '<div class="oppose-head oppose-head--left">'  .. html_escape(right_label) .. ri .. '</div>' ..
+      '</div>'
+
+    local rows = {}
+    for _, block in ipairs(div.content) do
+      if block.t == "BulletList" or block.t == "OrderedList" then
+        for _, item in ipairs(block.content) do
+          table.insert(rows, oppose_row_html(nil, item))
+        end
+      end
+    end
+
+    return pandoc.RawBlock("html",
+      '<div class="oppose-diagram">' .. header .. table.concat(rows, "\n") .. '</div>')
   end
 
   return nil

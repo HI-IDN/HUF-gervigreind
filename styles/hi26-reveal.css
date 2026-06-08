@@ -558,7 +558,7 @@
   align-self: stretch;
   background: var(--blue);
   color: var(--teal) !important;
-  font-size: 34px;
+  font-size: 18px !important;
   font-weight: 900;
   line-height: 1;
   margin: 0 !important;
@@ -575,7 +575,7 @@
 .card-enum-body p {
   margin: 0;
   color: var(--body-copy);
-  font-size: 18px !important;
+  font-size: 15px !important;
   line-height: 1.35;
 }
 

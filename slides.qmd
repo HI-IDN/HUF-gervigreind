@@ -118,13 +118,13 @@ Við förum í gegnum hvert skref á eigin glæru síðar.
 <span class="kicker">Markmið</span>
 <h2>Eftir tímann eigið þið að geta...</h2>
 
-::: {.card-enum}
-1. Útskýrt hvað gögn eru.
-2. Lýst hvað gagnavísindi eru.
-3. Skilið muninn á gagnavísindum og gervigreind.
-4. Útskýrt í grófum dráttum hvernig ChatGPT virkar.
-5. Skilið að spunagreind er aðeins ein tegund gervigreindar.
-6. Spurt gagnrýninna spurninga um svör frá gervigreind.
+::: {.fa-card}
+- 1 | | Útskýrt hvað gögn eru.
+- 2 | | Lýst hvað gagnavísindi eru.
+- 3 | | Skilið muninn á gagnavísindum og gervigreind.
+- 4 | | Útskýrt í grófum dráttum hvernig ChatGPT virkar.
+- 5 | | Skilið að spunagreind er aðeins ein tegund gervigreindar.
+- 6 | | Spurt gagnrýninna spurninga um svör frá gervigreind.
 :::
 <aside class="notes">
 Farðu stuttlega yfir markmið — ekki dvelja lengi hér.
@@ -303,16 +303,16 @@ Spurðu: „Hvernig heldið þið að tölvan lærir muninn á ketti og hundi? S
 
 ---
 
-<h2>Gagnavísindi og gervigreind tengjast — en eru ekki það sama</h2>
-<table class="table">
-<thead><tr><th>Gagnavísindi</th><th>Gervigreind</th></tr></thead>
-<tbody>
-<tr><td>Reynir að skilja gögn</td><td>Reynir að læra af gögnum</td></tr>
-<tr><td>Finnur mynstur í gögnum</td><td>Lærir mynstur sjálfkrafa</td></tr>
-<tr><td>Lýsir því sem gerðist</td><td>Spáir fyrir um hvað gæti gerst</td></tr>
-<tr><td>Hjálpar fólki að taka ákvarðanir</td><td>Getur tekið hluta af ákvörðuninni</td></tr>
-</tbody>
-</table>
+<h2>Gagnavísindi og gervigreind er nátengt</h2>
+<p class="sub">en eru ekki alveg það sama</p>
+
+::: {.oppose left="Gagnavísindi" right="Gervigreind" left-icon="microscope" right-icon="brain"}
+- Reynir að skilja gögn | Reynir að læra af gögnum
+- Finnur mynstur í gögnum | Lærir mynstur sjálfkrafa
+- Lýsir því sem gerðist | Spáir fyrir um hvað gæti gerst
+- Hjálpar fólki að taka ákvarðanir | Getur tekið hluta af ákvörðuninni
+:::
+
 <aside class="notes">
 Farðu í gegnum töfluna línu fyrir línu — ekki of hratt.
 
@@ -475,24 +475,24 @@ Bíddu eftir Menti-niðurstöðunum áður en þú ferð áfram.
 ---
 
 <h2>Þið voruð ekki að leita að rétta svarinu.</h2>
-<div class=”big-words”>
-<div class=”big-word”>smjör</div>
-<div class=”big-word”>ostur</div>
+<div class="big-words">
+<div class="big-word">smjör</div>
+<div class="big-word">ostur</div>
 </div>
-<p class=”statement”>Þið voruð að giska á líklegasta næsta orðið.</p>
-<p class=”callout”>ChatGPT gerir nákvæmlega það sama — og því skiptir samhengi máli:</p>
+<div class="statement">Þið voruð að giska á líklegasta næsta orðið.</div>
+<div class="callout">ChatGPT gerir nákvæmlega það sama — og því skiptir samhengi máli:</div>
 
 ::: {.fa-card}
-- circle-xmark | Erfitt — of lítið samhengi | „Ég fór að kaupa...” — ChatGPT hefur engar vísbendingar um hvað kemur næst.
-- circle-check | Auðveldara — meira samhengi | „Ég fór í Bónus að kaupa mjólk, brauð og...” — ChatGPT sér mynsturið og svarar nánar.
+- circle-xmark | Erfitt — of lítið samhengi | „Ég fór að kaupa..." — ChatGPT hefur engar vísbendingar um hvað kemur næst.
+- circle-check | Auðveldara — meira samhengi | „Ég fór í Bónus að kaupa mjólk, brauð og..." — ChatGPT sér mynsturið og svarar nánar.
 :::
 
-<aside class=”notes”>
+<aside class="notes">
 Bentu á niðurstöður Menti: flestir völdu líklegt matvæli — smjör, mjólk, brauð o.s.frv.
 
-„Þið voruð að giska á líklegustu svörin. ChatGPT gerir nákvæmlega það sama, bara mun hraðar og úr gríðarlegu magni af texta.”
+„Þið voruð að giska á líklegustu svörin. ChatGPT gerir nákvæmlega það sama, bara mun hraðar og úr gríðarlegu magni af texta."
 
-Þetta er prompt engineering í hnotskurn — mjög gagnleg lífsleikni. Sama gildir um líf: „Getur þú hjálpað mér?” vs. „Ég er að skrifa ritgerð um loftslagsbreytingar fyrir 9. bekk, getur þú hjálpað mér að finna þrjár sterkar rökstuðningar?”
+Þetta er prompt engineering í hnotskurn — mjög gagnleg lífsleikni. Sama gildir um líf: „Getur þú hjálpað mér?" vs. „Ég er að skrifa ritgerð um loftslagsbreytingar fyrir 9. bekk, getur þú hjálpað mér að finna þrjár sterkar rökstuðningar?"
 
 Hvettu nemendur til að gefa ChatGPT samhengi þegar þeir nota það.
 </aside>
@@ -501,7 +501,7 @@ Hvettu nemendur til að gefa ChatGPT samhengi þegar þeir nota það.
 
 ## {.img-split}
 
-<div class=”slide-content”>
+<div class="slide-content">
 <h2>Hvernig lærir ChatGPT?</h2>
 
 ::: {.fa-card cols=1}
@@ -510,7 +510,7 @@ Hvettu nemendur til að gefa ChatGPT samhengi þegar þeir nota það.
 - 3 | Spá fyrir | Nú getur það klárað setningar og svarað spurningum.
 :::
 
-<p class=”callout”><strong>Lykilhugmynd:</strong> ChatGPT skilur ekki tungumál eins og þú. Það <strong>giskar</strong> á hvað er líklegast að fylgja á eftir — orð fyrir orð.</p>
+<p class="callout"><strong>Lykilhugmynd:</strong> ChatGPT skilur ekki tungumál eins og þú. Það <strong>giskar</strong> á hvað er líklegast að fylgja á eftir — orð fyrir orð.</p>
 </div>
 <aside class="notes">
 ChatGPT var þjálfað á nánast öllu sem hefur verið skrifað á internetinu — bækur, greinar, Wikipedia, spjallborð.
@@ -606,7 +606,7 @@ Menti #8 · Open Ended: Hvað fannst þér vanta eða þurfa betri útskýringu?
 
 ## {.img-split}
 
-<div class=”slide-content”>
+<div class="slide-content">
 <span class="kicker">CCP-heimsókn</span>
 <h2>Spurningar sem þið getið haft með ykkur</h2>
 :::{.fa-card}
