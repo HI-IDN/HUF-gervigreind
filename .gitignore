@@ -36,3 +36,6 @@ test-results/
 *.log
 .env
 .env.*
+
+# Inspirational material, not for version control
+inspo/

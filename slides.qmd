@@ -1,0 +1,564 @@
+---
+pagetitle: "Frá gögnum að ákvörðunum"
+lang: is
+format:
+  revealjs:
+    theme: white
+    transition: slide
+    background-transition: fade
+    hash: true
+    controls: true
+    controls-layout: edges
+    controls-back-arrows: visible
+    slide-number: true
+    progress: true
+    title-slide: false
+    width: 1280
+    height: 720
+    margin: 0.04
+    css: styles/hi26-reveal.css
+    logo: img/hi/hi_blue2.svg
+    title-slide-attributes:
+      class: title-slide
+    include-in-header:
+      text: |
+        <link rel="icon" href="img/hi/favicon.svg" type="image/svg+xml">
+        <style>
+          /* Felur Quarto logo á titilglæru */
+          .hide-logo .slide-logo { display: none !important; }
+          .reveal .slides > section:not(.title-slide):not(.section-break):not(.break):not([data-background-iframe]):not(:has(> .title-slide)):not(:has(> .section-break)):not(:has(> .break)):not(:has(> .menti-login)):not(:has(> [data-background-iframe]))::after { content: "HUF · gervigreind · Helga & Signý"; left: 52px; }
+          .reveal .slides section[data-background-iframe]::after  { content: "www.menti.com : 3628 3395"; left: 52px; }
+          .reveal .slides section[data-background-iframe]::before { content: none; }
+        </style>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    include-after-body:
+      text: |
+        <script>
+        (() => {
+          const timers = new WeakMap();
+
+          function formatTime(seconds) {
+            const minutes = Math.floor(seconds / 60);
+            const rest = seconds % 60;
+            return `${minutes}:${String(rest).padStart(2, "0")}`;
+          }
+
+          function ringBell() {
+            const AudioContext = window.AudioContext || window.webkitAudioContext;
+            if (!AudioContext) return;
+
+            const ctx = new AudioContext();
+            const now = ctx.currentTime;
+            [880, 1175, 1568].forEach((frequency, index) => {
+              const oscillator = ctx.createOscillator();
+              const gain = ctx.createGain();
+              oscillator.type = "sine";
+              oscillator.frequency.setValueAtTime(frequency, now + index * 0.18);
+              gain.gain.setValueAtTime(0, now + index * 0.18);
+              gain.gain.linearRampToValueAtTime(0.18, now + index * 0.18 + 0.02);
+              gain.gain.exponentialRampToValueAtTime(0.001, now + index * 0.18 + 0.15);
+              oscillator.connect(gain).connect(ctx.destination);
+              oscillator.start(now + index * 0.18);
+              oscillator.stop(now + index * 0.18 + 0.16);
+            });
+          }
+
+          function stopTimer(section) {
+            const timer = timers.get(section);
+            if (timer) {
+              window.clearInterval(timer.interval);
+              timers.delete(section);
+            }
+          }
+
+          function startTimer(section) {
+            if (!section?.classList?.contains("countdown-break")) return;
+
+            stopTimer(section);
+            const display = section.querySelector("[data-countdown-display]");
+            const status = section.querySelector("[data-countdown-status]");
+            if (!display) return;
+
+            const duration = Number(section.dataset.countdownSeconds || 300);
+            const started = Date.now();
+            let rang = false;
+
+            const tick = () => {
+              const elapsed = Math.floor((Date.now() - started) / 1000);
+              const remaining = Math.max(0, duration - elapsed);
+              display.textContent = formatTime(remaining);
+              section.style.setProperty("--countdown-progress", `${(remaining / duration) * 100}%`);
+
+              if (remaining === 0) {
+                window.clearInterval(interval);
+                timers.delete(section);
+                section.classList.add("countdown-finished");
+                if (status) status.textContent = "Pásan er búin";
+                if (!rang) {
+                  rang = true;
+                  ringBell();
+                }
+              }
+            };
+
+            section.classList.remove("countdown-finished");
+            if (status) status.textContent = "Tíminn telur niður";
+            const interval = window.setInterval(tick, 250);
+            timers.set(section, { interval });
+            tick();
+          }
+
+          window.addEventListener("load", () => {
+            if (!window.Reveal) return;
+            Reveal.on("slidechanged", event => {
+              stopTimer(event.previousSlide);
+              startTimer(event.currentSlide);
+            });
+            startTimer(Reveal.getCurrentSlide());
+          });
+        })();
+        </script>
+---
+
+<section class="title-slide custom-title" data-background-color="#2DD2C0" data-state="hide-logo">
+<div class="title-theme">Frá gögnum að ákvörðunum</div>
+<h1 class="subtitle-highlight">Hvernig gervigreind og gagnavísindi hjálpa okkur að skilja heiminn</h1>
+<div class="title-meta">
+<a href="https://hi.is/staff/helgaingim" target="_blank" rel="noopener noreferrer"><strong>Dr. Helga Ingimundardóttir</strong></a>
+<a href="mailto:helgaingim@hi.is">helgaingim@hi.is</a>
+<br>
+<a href="https://hi.is/staff/signyk" target="_blank" rel="noopener noreferrer"><strong>Signý Kristín Sigurjónsdóttir</strong></a>
+<a href="mailto:signyk@hi.is">signyk@hi.is</a>
+</div>
+<div class="event-meta">Háskóli unga fólksins · 2026</div>
+</section>
+
+---
+
+<section class="menti-login" data-background-color="#2DD2C0">
+<div>
+<span class="kicker">Menti</span>
+<h2>Farðu inn áður en við byrjum</h2>
+<p class="menti-url">www.menti.com</p>
+<p class="menti-code">3628 3395</p>
+</div>
+<img class="menti-qr" src="img/menti-qr.png" alt="QR-kóði fyrir Menti">
+<aside class="notes">Hafðu þessa glæru uppi á meðan nemendur koma sér inn á Menti.</aside>
+</section>
+
+---
+
+<section id="menti-1" data-background-iframe="https://www.menti.com/al86xyveexcw" data-background-interactive>
+<aside class="notes">Menti #1 · Word Cloud: Hvað dettur þér fyrst í hug þegar þú heyrir orðið „gervigreind“?</aside>
+</section>
+
+---
+
+<section class="img-split">
+<div class="slide-content">
+<span class="kicker">Aðalpunktur dagsins</span>
+<h2>Gervigreind er meira en ChatGPT</h2>
+<p class="lead">Margir setja samasemmerki á milli <strong>spunagreindar</strong> og <strong>gervigreindar</strong>.</p>
+<div class="callout">ChatGPT er eitt dæmi um gervigreind — ekki öll gervigreind.</div>
+<p class="sub">Það er svipað og að halda að internetið sé bara TikTok.</p>
+</div>
+<img class="slide-img" src="img/ai-chatgpt-landscape.jpg" alt="">
+<aside class="notes">PROMPT · Pop Art (Warhol): A bold Warhol-style grid where ChatGPT is one small bright panel among many — computer vision, maps, robots, music recommendations — each panel a vivid screenprint colour. Palette: #10099F #2DD2C0 #FAC55B #FC8484 #FFA05F on white. Thick outlines, flat halftone dots, no text.</aside>
+</section>
+
+---
+
+<section>
+<span class="kicker">Leiðin í dag</span>
+<h2>Rauði þráðurinn</h2>
+<p class="sub">Allt byrjar á gögnum — og endar í betri ákvörðunum.</p>
+<div class="diagram-row">
+<div class="step"><strong>Gögn</strong><span>upplýsingar</span></div>
+<div class="arrow">→</div>
+<div class="step"><strong>Gagnavísindi</strong><span>skilja mynstur</span></div>
+<div class="arrow">→</div>
+<div class="step"><strong>Gervigreind</strong><span>læra mynstur</span></div>
+<div class="arrow">→</div>
+<div class="step"><strong>Spár</strong><span>hvað gæti gerst?</span></div>
+<div class="arrow">→</div>
+<div class="step"><strong>Ákvarðanir</strong><span>hvað eigum við að gera?</span></div>
+</div>
+</section>
+
+---
+
+<section>
+<span class="kicker">Markmið</span>
+<h2>Eftir tímann eigið þið að geta...</h2>
+<div class="three-col">
+<div class="soft"><h3>1</h3><p>Útskýrt hvað gögn eru.</p></div>
+<div class="soft"><h3>2</h3><p>Lýst hvað gagnavísindi eru.</p></div>
+<div class="soft"><h3>3</h3><p>Skilið muninn á gagnavísindum og gervigreind.</p></div>
+</div>
+<div class="three-col">
+<div class="soft"><h3>4</h3><p>Útskýrt í grófum dráttum hvernig ChatGPT virkar.</p></div>
+<div class="soft"><h3>5</h3><p>Skilið að spunagreind er aðeins ein tegund gervigreindar.</p></div>
+<div class="soft"><h3>6</h3><p>Spurt gagnrýninna spurninga um svör frá gervigreind.</p></div>
+</div>
+</section>
+
+---
+
+<section>
+<span class="kicker">Kafli 1</span>
+<h2>Hvað eru gögn?</h2>
+<p class="lead">Gögn eru upplýsingar.</p>
+<p>Í hvert skipti sem við gerum eitthvað í rafrænum heimi verða til gögn.</p>
+<div class="three-col">
+<div class="card"><h3><i class="fa-solid fa-computer-mouse fa-fw box-icon"></i>Smellum</h3><p>Hvaða hnapp var ýtt á?</p></div>
+<div class="card"><h3><i class="fa-solid fa-keyboard fa-fw box-icon"></i>Skrifum</h3><p>Hvaða orð voru slegin inn?</p></div>
+<div class="card"><h3><i class="fa-solid fa-eye fa-fw box-icon"></i>Horfum</h3><p>Hversu lengi var horft?</p></div>
+</div>
+<div class="three-col">
+<div class="card"><h3><i class="fa-solid fa-headphones fa-fw box-icon"></i>Hlustum</h3><p>Hvaða lag var spilað?</p></div>
+<div class="card"><h3><i class="fa-solid fa-location-dot fa-fw box-icon"></i>Hreyfum okkur</h3><p>Hvar er síminn?</p></div>
+<div class="card"><h3><i class="fa-solid fa-gauge-high fa-fw box-icon"></i>Mælum</h3><p>Hiti, hraði, tími, fjöldi.</p></div>
+</div>
+</section>
+
+---
+
+<section id="menti-2" data-background-iframe="https://www.menti.com/al86xyveexcw" data-background-interactive>
+<aside class="notes">Menti #2 · Open Ended: Hvaða gögn heldurðu að síminn þinn safni um þig?</aside>
+</section>
+
+---
+
+<section class="img-split">
+<div class="slide-content">
+<h2>Gögn geta verið margt</h2>
+<p class="sub">Gögn eru ekki bara tölur í Excel.</p>
+<div class="three-col">
+<div class="soft"><h3><i class="fa-solid fa-font fa-fw box-icon"></i>Texti</h3><p>Skilaboð, greinar, bækur</p></div>
+<div class="soft"><h3><i class="fa-solid fa-image fa-fw box-icon"></i>Myndir</h3><p>Ljósmyndir, teikningar</p></div>
+<div class="soft"><h3><i class="fa-solid fa-map-location-dot fa-fw box-icon"></i>Staðsetningar</h3><p>GPS hnit, kort</p></div>
+</div>
+<div class="three-col">
+<div class="soft"><h3><i class="fa-solid fa-chart-line fa-fw box-icon"></i>Mælingar</h3><p>Hitastig, hraði, þyngd</p></div>
+<div class="soft"><h3><i class="fa-solid fa-wave-square fa-fw box-icon"></i>Hljóð</h3><p>Tónlist, tal, hljóðbylgjur</p></div>
+<div class="soft"><h3><i class="fa-solid fa-video fa-fw box-icon"></i>Myndbönd</h3><p>Klippur, streymi, kvikmyndir</p></div>
+</div>
+</div>
+<img class="slide-img" src="img/ai-data-types.jpg" alt="">
+<aside class="notes">PROMPT · Bauhaus/Constructivism: Six bold geometric shapes representing data types — a speech bubble (text), a polaroid frame (photos), a map pin (location), a thermometer (sensor), a soundwave (audio), a film strip (video). Flat Bauhaus composition, primary grid layout. Palette: #10099F #2DD2C0 #FAC55B on #F5F5F5. No text.</aside>
+</section>
+
+---
+
+<section class="img-split">
+<div class="slide-content">
+<span class="kicker">Kafli 2</span>
+<h2>Hvað eru gagnavísindi?</h2>
+<div class="callout">Gagnavísindi snúast um að nota gögn til að skilja heiminn betur.</div>
+<p>Gagnavísindamenn nota stærðfræði, tölfræði og tölvufræði til að breyta hráum gögnum í gagnlegar upplýsingar.</p>
+</div>
+<img class="slide-img" src="img/ai-data-science.jpg" alt="">
+<aside class="notes">PROMPT · Impressionism: A scientist standing before a glowing canvas of swirling data points that slowly resolve into clear charts and patterns, Monet-style loose brushstrokes and dappled light. Palette: #10099F #2DD2C0 #00FFBA with warm ivory #F5F0E8 highlights. Painterly texture, no text.</aside>
+</section>
+
+---
+
+<section>
+<h2>Gagnavísindi í raunveruleikanum</h2>
+<div class="three-col">
+<div class="card"><h3><i class="fa-solid fa-cloud-sun-rain fa-fw box-icon"></i>Veðurspá</h3><p>Veðurstöðvar og gervihnettir mæla hitastig, vind og loftþrýsting. Gögnin eru greind til að spá fyrir um veðrið.</p></div>
+<div class="card"><h3><i class="fa-brands fa-spotify fa-fw box-icon"></i>Spotify</h3><p>Spotify skoðar
+hvaða lög þú hlustar á, hvenær og hversu lengi, og finnur mynstur í hlustun.</p></div>
+<div class="card"><h3><i class="fa-solid fa-gamepad fa-fw box-icon"></i>Leikjahönnun</h3><p>Hönnuðir skoða hvar leikmenn festast, hvar þeir hætta og hvað þeim finnst skemmtilegt.</p></div>
+</div>
+</section>
+
+---
+
+<section>
+<h2>Ferlið í gagnavísindum</h2>
+<p class="sub">Skref fyrir skref: úr hráu efni í niðurstöðu.</p>
+<div class="diagram-row">
+<div class="step"><strong>1. Safna gögnum</strong><span>mæla, skrá, safna</span></div>
+<div class="arrow">→</div>
+<div class="step"><strong>2. Greina gögn</strong><span>hreinsa, flokka, skoða</span></div>
+<div class="arrow">→</div>
+<div class="step"><strong>3. Finna mynstur</strong><span>hvað endurtekur sig?</span></div>
+<div class="arrow">→</div>
+<div class="step"><strong>4. Draga ályktanir</strong><span>hvað þýðir þetta?</span></div>
+</div>
+<p class="callout"><strong>Regla:</strong> án góðra gagna eru engar góðar niðurstöður.</p>
+</section>
+
+---
+
+<section id="menti-3" data-background-iframe="https://www.menti.com/al86xyveexcw" data-background-interactive>
+<aside class="notes">Menti #3 · Multiple Choice: Hvort myndir þú frekar nota til að spá fyrir um næsta YouTube-myndband vinar þíns?</aside>
+</section>
+
+---
+
+<section class="break countdown-break" data-background-color="#2DD2C0" data-countdown-seconds="300">
+<h1>Pása</h1>
+<div class="countdown-clock" data-countdown-display>5:00</div>
+<p data-countdown-status>Tíminn telur niður</p>
+</section>
+
+---
+
+<section class="img-split">
+<div class="slide-content">
+<span class="kicker">Kafli 3</span>
+<h2>Hvað er gervigreind?</h2>
+<div class="callout">Gervigreind er þegar tölvur læra af gögnum og nota það sem þær læra til að taka ákvarðanir eða gera spár.</div>
+<p>Það er eins og að kenna tölvunni að þekkja mynstur — til dæmis muninn á ketti og hundi eftir að hafa séð mörg dæmi.</p>
+</div>
+<img class="slide-img" src="img/ai-learning.jpg" alt="">
+<aside class="notes">PROMPT · Surrealism (Magritte): A bowler-hatted figure teaching a floating geometric brain to distinguish a cat from a dog, dreamlike sky background, impossible scale. Palette: #10099F #2DD2C0 #FFA05F on misty #F5F0E8. Oil-paint texture, no text.</aside>
+</section>
+
+---
+
+<section>
+<h2>Gagnavísindi og gervigreind tengjast — en eru ekki það sama</h2>
+<table class="table">
+<thead><tr><th>Gagnavísindi</th><th>Gervigreind</th></tr></thead>
+<tbody>
+<tr><td>Reynir að skilja gögn</td><td>Reynir að læra af gögnum</td></tr>
+<tr><td>Finnur mynstur í gögnum</td><td>Lærir mynstur sjálfkrafa</td></tr>
+<tr><td>Lýsir því sem gerðist</td><td>Spáir fyrir um hvað gæti gerst</td></tr>
+<tr><td>Hjálpar fólki að taka ákvarðanir</td><td>Getur tekið hluta af ákvörðuninni</td></tr>
+</tbody>
+</table>
+</section>
+
+---
+
+<section>
+<h2>Stutta útgáfan</h2>
+<div class="two-col">
+<div class="soft blue"><h3>Gagnavísindi</h3><p>nota gögn til að skilja heiminn.</p></div>
+<div class="soft green"><h3>Gervigreind</h3><p>lætur tölvur læra af gögnum.</p></div>
+</div>
+<p class="big-claim">Gögn → mynstur → spá → ákvörðun</p>
+</section>
+
+---
+
+<section id="menti-4" data-background-iframe="https://www.menti.com/al86xyveexcw" data-background-interactive>
+<aside class="notes">Menti #4 · Ranking: Hvar heldurðu að gervigreind sé mest notuð í dag?</aside>
+</section>
+
+---
+
+<section>
+<h2>Gervigreind er regnhlífarhugtak</h2>
+<div class="three-col">
+<div class="soft"><h3><i class="fa-solid fa-chart-simple fa-fw box-icon"></i>Spálíkön</h3><p>Spá fyrir um eftirspurn, veður eða hegðun.</p></div>
+<div class="soft"><h3><i class="fa-solid fa-camera-retro fa-fw box-icon"></i>Myndgreining</h3><p>Greina myndir, t.d. ketti, bíla eða sjúkdóma.</p></div>
+<div class="soft"><h3><i class="fa-solid fa-route fa-fw box-icon"></i>Bestun</h3><p>Finna góða leið, gott plan eða góða röðun.</p></div>
+</div>
+<div class="three-col">
+<div class="soft"><h3><i class="fa-solid fa-language fa-fw box-icon"></i>Málgreining</h3><p>Skilja texta, þýða, flokka og svara.</p></div>
+<div class="soft"><h3><i class="fa-solid fa-flask-vial fa-fw box-icon"></i>Hermun</h3><p>Prófa „hvað ef?“ án þess að prófa í raunheimi.</p></div>
+<div class="soft"><h3><i class="fa-solid fa-wand-magic-sparkles fa-fw box-icon"></i>Spunagreind</h3><p>Búa til texta, myndir, hljóð, kóða eða myndband.</p></div>
+</div>
+</section>
+
+---
+
+<section>
+<h2>Dæmi: frá gögnum að ákvörðunum</h2>
+<div class="three-col">
+<div class="card"><h3><i class="fa-solid fa-fish fa-fw box-icon"></i>Fiskvinnsla</h3><p>Gögn úr myndavélum hjálpa vélum að skera fisk þannig að minna fari til spillis.</p></div>
+<div class="card"><h3><i class="fa-solid fa-mountain-sun fa-fw box-icon"></i>Ferðaþjónusta</h3><p>Gögn um áhuga, tíma og staðsetningu hjálpa til við að mæla með ferðum.</p></div>
+<div class="card"><h3><i class="fa-solid fa-calendar-days fa-fw box-icon"></i>Vaktaplön</h3><p>Gögn um þörf, frí og reglur hjálpa til við að raða fólki á vaktir.</p></div>
+</div>
+</section>
+
+---
+
+<section class="break countdown-break" data-background-color="#2DD2C0" data-countdown-seconds="300">
+<h1>Pása</h1>
+<div class="countdown-clock" data-countdown-display>5:00</div>
+<p data-countdown-status>Tíminn telur niður</p>
+</section>
+
+---
+
+<section class="img-split">
+<div class="slide-content">
+<span class="kicker">Kafli 4</span>
+<h2>Hvað er spunagreind?</h2>
+<p class="lead">Spunagreind er ein tegund gervigreindar sem býr til nýtt efni.</p>
+<div class="callout">Spunagreind sýnir okkur líka hvað var í gögnunum.</div>
+<div class="three-col">
+<div class="soft"><h3><i class="fa-solid fa-pen-nib fa-fw box-icon"></i>Texti</h3><p>Greinar, svör, sögur, þýðingar.</p></div>
+<div class="soft"><h3><i class="fa-solid fa-palette fa-fw box-icon"></i>Myndir</h3><p>Nýjar myndir út frá lýsingum.</p></div>
+<div class="soft"><h3><i class="fa-solid fa-code fa-fw box-icon"></i>Annað efni</h3><p>Tónlist, kóði, myndbönd og fleira.</p></div>
+</div>
+<p class="callout"><strong>Mikilvægt:</strong> ChatGPT er bara eitt dæmi um spunagreind.</p>
+</div>
+<img class="slide-img" src="img/ai-generative.jpg" alt="">
+<aside class="notes">PROMPT · Futurism: A glowing prompt box at centre exploding outward into streams of text, painted images, musical notes and code — Italian Futurist diagonal energy lines. Palette: #10099F #00FFBA #FAC55B #FC8484 on deep navy #050330. High contrast, motion blur, no text.</aside>
+</section>
+
+---
+
+<section>
+<h2>Spunagreind ≠ gervigreind</h2>
+<div class="callout">Spunagreind er ekki það sama og gervigreind. Hún er ein tegund af gervigreind.</div>
+<div class="two-col">
+<div>
+<p><span class="pill">Dýr</span> hundur · köttur · hestur</p>
+<p><span class="pill">Gervigreind</span> spálíkön · myndgreining · bestun · spunagreind</p>
+</div>
+<div class="icon-big">AI</div>
+</div>
+</section>
+
+---
+
+<section class="split bonus-slide">
+<div>
+<span class="kicker">Kafli 5 · besta tengingin við ChatGPT</span>
+<h2>Hvernig virkar ChatGPT?</h2>
+<p class="lead">Byrjum með setningu sem bekkurinn getur botnað.</p>
+</div>
+</section>
+
+---
+
+<section id="menti-5" data-background-iframe="https://www.menti.com/al86xyveexcw" data-background-interactive>
+<aside class="notes">Menti #5 · Open Ended: Kláraðu setninguna: „Ég fór að kaupa ...“</aside>
+</section>
+
+---
+
+<section>
+<h2>Þið voruð ekki að leita að rétta svarinu.</h2>
+<div class="big-words">
+<div class="big-word">smjör</div>
+<div class="big-word">ostur</div>
+</div>
+<p class="statement">Þið voruð að giska á líklegasta næsta orðið.</p>
+<p class="blue-note">ChatGPT gerir nákvæmlega það sama: spáir fyrir um líklegt framhald, orð fyrir orð.</p>
+</section>
+
+---
+
+<section>
+<h2>Samhengi skiptir máli</h2>
+<p class="sub">Því meira samhengi sem við höfum, því auðveldara er að skilja og svara.</p>
+<div class="two-col">
+<div class="soft red"><h3>Erfitt</h3><p>„Ég fór að kaupa...“</p><p class="muted">Of lítið samhengi.</p></div>
+<div class="soft green"><h3>Auðveldara</h3><p>„Ég fór í Bónus að kaupa mjólk, brauð og...“</p><p class="muted">Meira samhengi.</p></div>
+</div>
+</section>
+
+---
+
+<section class="img-split">
+<div class="slide-content">
+<h2>Hvernig lærir ChatGPT?</h2>
+<div class="diagram-row">
+<div class="step"><strong>1. Lesa texta</strong><span>bækur, vefsíður, greinar</span></div>
+<div class="arrow">→</div>
+<div class="step"><strong>2. Finna mynstur</strong><span>hvaða orð tengjast?</span></div>
+<div class="arrow">→</div>
+<div class="step"><strong>3. Spá fyrir</strong><span>hvað kemur næst?</span></div>
+</div>
+<p class="callout"><strong>Lykilhugmynd:</strong> ChatGPT býr til texta með því að spá fyrir um líklegt framhald — orð fyrir orð.</p>
+</div>
+<img class="slide-img" src="img/ai-llm-training.jpg" alt="">
+<aside class="notes">PROMPT · Art Deco: An ornate 1930s library where books and webpages spiral upward into a glowing Art Deco archway labelled with neural connections, then emerge as a golden chat bubble. Palette: #10099F #2DD2C0 #FAC55B #F5F0E8 with metallic gold accents. Geometric borders, no text.</aside>
+</section>
+
+---
+
+<section>
+<h2>Það skrifar ekki allt svarið í einu</h2>
+<p class="lead">Það velur eitt næsta orð. Svo notar það nýju setninguna til að velja næsta orð.</p>
+<div class="callout">Ég fór í Bónus að kaupa → mjólk → brauð → og → smjör</div>
+<p class="sub">Textinn sem kemur út verður hluti af næsta inntaki.</p>
+</section>
+
+---
+
+<section>
+<span class="kicker">Kafli 6</span>
+<h2>Af hverju gerir ChatGPT mistök?</h2>
+<p class="lead">Vegna þess að góð spá er ekki alltaf rétt.</p>
+<div class="three-col">
+<div class="card"><h3><i class="fa-solid fa-dice fa-fw box-icon"></i>Það er að spá</h3><p>Ekki alltaf að finna „rétta“ svarið.</p></div>
+<div class="card"><h3><i class="fa-solid fa-volume-high fa-fw box-icon"></i>Það getur hljómað öruggt</h3><p>Jafnvel þegar svarið er rangt.</p></div>
+<div class="card"><h3><i class="fa-solid fa-magnifying-glass fa-fw box-icon"></i>Það þarf að athuga</h3><p>Sérstaklega í heilsu, lögum, peningum og heimildum.</p></div>
+</div>
+</section>
+
+---
+
+<section id="menti-6" data-background-iframe="https://www.menti.com/al86xyveexcw" data-background-interactive>
+<aside class="notes">Menti #6 · Multiple Choice: Ímyndaðu þér að þú sért veik/ur. Hvort myndir þú treysta til að fá ráðleggingar?</aside>
+</section>
+
+---
+
+<section>
+<h2>Er ChatGPT að hugsa eða að giska?</h2>
+<p class="sub">Ræðið tvö og tvö í 2 mínútur.</p>
+<div class="three-col">
+<div class="soft yellow"><h3>Hugsa?</h3><p>Er það með skoðanir, vilja eða tilfinningar?</p></div>
+<div class="soft blue"><h3>Giska?</h3><p>Er þetta stærðfræði, mynstur og líkur?</p></div>
+<div class="soft green"><h3>Afleiðing?</h3><p>Hvernig eigum við þá að nota það?</p></div>
+</div>
+</section>
+
+---
+
+<section>
+<span class="kicker">Yfirferð</span>
+<h2>Hvað lærðum við?</h2>
+<div class="three-col">
+<div class="soft"><h3>Gögn</h3><p>Upplýsingar sem hægt er að safna og skoða.</p></div>
+<div class="soft"><h3>Gagnavísindi</h3><p>Að nota gögn til að skilja heiminn.</p></div>
+<div class="soft"><h3>Gervigreind</h3><p>Að láta tölvur læra af gögnum.</p></div>
+</div>
+<div class="three-col">
+<div class="soft"><h3>Spunagreind</h3><p>Ein tegund gervigreindar sem býr til efni.</p></div>
+<div class="soft"><h3>ChatGPT</h3><p>Dæmi um spunagreind.</p></div>
+<div class="soft"><h3>Ákvarðanir</h3><p>Markmiðið er að skilja betur og velja betur.</p></div>
+</div>
+</section>
+
+---
+
+<section id="menti-7" data-background-iframe="https://www.menti.com/al86xyveexcw" data-background-interactive>
+<aside class="notes">Menti #7 · Open Ended: Hvað er eitt sem þú skilur betur núna en í byrjun?</aside>
+</section>
+
+---
+
+<section>
+<span class="kicker">Brú yfir í CCP-heimsókn</span>
+<h2>Spurningar sem þið getið haft með ykkur</h2>
+<div class="three-col">
+<div class="card"><h3><i class="fa-solid fa-database fa-fw box-icon"></i>Hvaða gögn?</h3><p>Hvaða gögn safnast þegar fólk spilar leik?</p></div>
+<div class="card"><h3><i class="fa-solid fa-shuffle fa-fw box-icon"></i>Hvaða mynstur?</h3><p>Hvernig sjáið þið hvort leikmenn festast, læra eða hætta?</p></div>
+<div class="card"><h3><i class="fa-solid fa-circle-check fa-fw box-icon"></i>Hvaða ákvarðanir?</h3><p>Hvernig breyta gögnin leiknum, hönnuninni eða þjónustunni?</p></div>
+</div>
+</section>
+
+---
+
+<section>
+<h2>Lokaskilaboð</h2>
+<p class="big-claim">Gögn eru grunnurinn.</p>
+<p class="big-claim">Gagnavísindi hjálpa okkur að skilja gögnin.</p>
+<p class="big-claim">Gervigreind lærir af gögnunum.</p>
+<p class="big-claim">Spunagreind er ein tegund gervigreindar.</p>
+<p class="sub">Frá gögnum að ákvörðunum.</p>
+</section>
