@@ -14,11 +14,12 @@ format:
     slide-number: true
     progress: true
     title-slide: false
-    width: 1280
-    height: 720
-    margin: 0.04
+    width: "100%"
+    height: "100%"
+    margin: 0
     css: styles/hi26-reveal.css
-    logo: img/hi/hi_blue2.svg
+    logo: img/hi/hi_named_logo-is.svg
+    footer: "HUF · gervigreind · Helga & Signý"
     title-slide-attributes:
       class: title-slide
     include-in-header:
@@ -27,9 +28,7 @@ format:
         <style>
           /* Felur Quarto logo á titilglæru */
           .hide-logo .slide-logo { display: none !important; }
-          .reveal .slides > section:not(.title-slide):not(.section-break):not(.break):not(.menti-login):not([data-background-iframe]):not(:has(> .title-slide)):not(:has(> .section-break)):not(:has(> .break)):not(:has(> .menti-login)):not(:has(> [data-background-iframe]))::after { content: "HUF · gervigreind · Helga & Signý"; left: 52px; }
-          .reveal .slides section[data-background-iframe]::after  { content: "www.menti.com : 3628 3395"; left: 52px; }
-          .reveal .slides section[data-background-iframe]::before { content: none; }
+          .hide-logo .footer { display: none !important; }
         </style>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -137,6 +136,14 @@ format:
 </div>
 <div class="event-meta">Háskóli unga fólksins · 2026</div>
 
+<aside class="notes">
+Okkur til aðstoðar í dag er <strong>Brynjólfur Stefánsson</strong>.
+
+Brynjólfur er meistaranemi í tölvunarfræði á netöryggissérsviði. Hann starfar sem aðstoðarrannsakandi við Tölvunarfræðideild Háskóla Íslands, þar sem hann sinnir rannsóknum og kennslu á sviði netöryggis.
+
+Hann starfar einnig sem verkefnastjóri hjá NýMennt á Menntavísindasviði og leiðir þar verkefni eins og First Lego League (FLL), World Robot Olympiad (WRO) og Ungt vísindafólk (EUCYS).
+</aside>
+
 ---
 
 ## {.menti-login data-background-color="#2DD2C0"}
@@ -241,7 +248,7 @@ format:
 </div>
 <div class="three-col">
 <div class="soft"><h3><i class="fa-solid fa-ruler-horizontal fa-fw box-icon"></i>Mælingar</h3><p>Hitastig, hraði, þyngd</p></div>
-<div class="soft"><h3><i class="fa-solid fa-volume fa-fw box-icon"></i>Hljóð</h3><p>Tónlist, tal, hljóðbylgjur</p></div>
+<div class="soft"><h3><i class="fa-solid fa-volume-high fa-fw box-icon"></i>Hljóð</h3><p>Tónlist, tal, hljóðbylgjur</p></div>
 <div class="soft"><h3><i class="fa-solid fa-video fa-fw box-icon"></i>Myndbönd</h3><p>Klippur, streymi, kvikmyndir</p></div>
 </div>
 </div>
@@ -298,11 +305,7 @@ hvaða lög þú hlustar á, hvenær og hversu lengi, og finnur mynstur í hlust
 
 ---
 
-## {.break .countdown-break data-background-color="#2DD2C0" data-countdown-seconds="300"}
-
-<h1>Pása</h1>
-<div class="countdown-clock" data-countdown-display>5:00</div>
-<p data-countdown-status>Tíminn telur niður</p>
+{{< pause 300 >}}
 
 ---
 
@@ -372,11 +375,7 @@ hvaða lög þú hlustar á, hvenær og hversu lengi, og finnur mynstur í hlust
 
 ---
 
-## {.break .countdown-break data-background-color="#2DD2C0" data-countdown-seconds="300"}
-
-<h1>Pása</h1>
-<div class="countdown-clock" data-countdown-display>5:00</div>
-<p data-countdown-status>Tíminn telur niður</p>
+{{< pause 300 >}}
 
 ---
 
@@ -492,16 +491,7 @@ hvaða lög þú hlustar á, hvenær og hversu lengi, og finnur mynstur í hlust
 
 ---
 
-## {.countdown-break data-countdown-seconds="120"}
-
-<h2>Er ChatGPT að hugsa eða að giska?</h2>
-<p class="sub">Ræðið tvö og tvö í 2 mínútur.</p>
-<div class="countdown-mini" data-countdown-display>2:00</div>
-<div class="three-col">
-<div class="soft yellow"><h3>Hugsa?</h3><p>Er það með skoðanir, vilja eða tilfinningar?</p></div>
-<div class="soft blue"><h3>Giska?</h3><p>Er þetta stærðfræði, mynstur og líkur?</p></div>
-<div class="soft green"><h3>Afleiðing?</h3><p>Hvernig eigum við þá að nota það?</p></div>
-</div>
+{{< pause 120 >}}
 
 ---
 
@@ -522,7 +512,11 @@ hvaða lög þú hlustar á, hvenær og hversu lengi, og finnur mynstur í hlust
 
 ## {#menti-7 data-background-iframe="https://www.menti.com/al86xyveexcw" data-background-interactive=true}
 
-<aside class="notes">Menti #7 · Open Ended: Hvað er eitt sem þú skilur betur núna en í byrjun?</aside>
+<aside class="notes">
+Menti #7 · Open Ended: Hvað er eitt sem þú skilur betur núna en í byrjun?
+
+Menti #8 · Open Ended: Hvað fannst þér vanta eða þurfa betri útskýringu?
+</aside>
 
 ---
 
