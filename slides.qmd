@@ -165,8 +165,10 @@ format:
 <div class="callout">ChatGPT er eitt dæmi um gervigreind — ekki öll gervigreind.</div>
 <p class="sub">Það er svipað og að halda að internetið sé bara TikTok.</p>
 </div>
+<figure>
 <img class="slide-img" src="img/ai-chatgpt-landscape.jpg" alt="">
-<aside class="notes">PROMPT · Pop Art (Warhol): A bold Warhol-style grid where ChatGPT is one small bright panel among many — computer vision, maps, robots, music recommendations — each panel a vivid screenprint colour. Palette: #10099F #2DD2C0 #FAC55B #FC8484 #FFA05F on white. Thick outlines, flat halftone dots, no text.</aside>
+<figcaption class="caption-prompt">PROMPT · Pop Art (Warhol): A bold Warhol-style grid where ChatGPT is one small bright panel among many — computer vision, maps, robots, music recommendations — each panel a vivid screenprint colour. Palette: #10099F #2DD2C0 #FAC55B #FC8484 #FFA05F on white. Thick outlines, flat halftone dots, no text, portrait mode.</figcaption>
+</figure>
 </section>
 
 ---
@@ -242,13 +244,15 @@ format:
 <div class="soft"><h3><i class="fa-solid fa-map-location-dot fa-fw box-icon"></i>Staðsetningar</h3><p>GPS hnit, kort</p></div>
 </div>
 <div class="three-col">
-<div class="soft"><h3><i class="fa-solid fa-chart-line fa-fw box-icon"></i>Mælingar</h3><p>Hitastig, hraði, þyngd</p></div>
-<div class="soft"><h3><i class="fa-solid fa-wave-square fa-fw box-icon"></i>Hljóð</h3><p>Tónlist, tal, hljóðbylgjur</p></div>
+<div class="soft"><h3><i class="fa-solid fa-ruler-horizontal fa-fw box-icon"></i>Mælingar</h3><p>Hitastig, hraði, þyngd</p></div>
+<div class="soft"><h3><i class="fa-solid fa-volume fa-fw box-icon"></i>Hljóð</h3><p>Tónlist, tal, hljóðbylgjur</p></div>
 <div class="soft"><h3><i class="fa-solid fa-video fa-fw box-icon"></i>Myndbönd</h3><p>Klippur, streymi, kvikmyndir</p></div>
 </div>
 </div>
+<figure>
 <img class="slide-img" src="img/ai-data-types.jpg" alt="">
-<aside class="notes">PROMPT · Bauhaus/Constructivism: Six bold geometric shapes representing data types — a speech bubble (text), a polaroid frame (photos), a map pin (location), a thermometer (sensor), a soundwave (audio), a film strip (video). Flat Bauhaus composition, primary grid layout. Palette: #10099F #2DD2C0 #FAC55B on #F5F5F5. No text.</aside>
+<figcaption class="caption-prompt">PROMPT · Bauhaus/Constructivism: Six bold geometric shapes representing data types — a speech bubble (text), a polaroid frame (photos), a map pin (location), a thermometer (sensor), a soundwave (audio), a film strip (video). Flat Bauhaus composition, primary grid layout. Palette: #10099F #2DD2C0 #FAC55B on #F5F5F5. no text, portrait mode.</figcaption>
+</figure>
 </section>
 
 ---
@@ -260,8 +264,10 @@ format:
 <div class="callout">Gagnavísindi snúast um að nota gögn til að skilja heiminn betur.</div>
 <p>Gagnavísindamenn nota stærðfræði, tölfræði og tölvufræði til að breyta hráum gögnum í gagnlegar upplýsingar.</p>
 </div>
+<figure>
 <img class="slide-img" src="img/ai-data-science.jpg" alt="">
-<aside class="notes">PROMPT · Impressionism: A scientist standing before a glowing canvas of swirling data points that slowly resolve into clear charts and patterns, Monet-style loose brushstrokes and dappled light. Palette: #10099F #2DD2C0 #00FFBA with warm ivory #F5F0E8 highlights. Painterly texture, no text.</aside>
+<figcaption class="caption-prompt">PROMPT · Impressionism: A scientist standing before a glowing canvas of swirling data points that slowly resolve into clear charts and patterns, Monet-style loose brushstrokes and dappled light. Palette: #10099F #2DD2C0 #00FFBA with warm ivory #F5F0E8 highlights. Painterly texture, no text, portrait mode.</figcaption>
+</figure>
 </section>
 
 ---
@@ -316,8 +322,10 @@ hvaða lög þú hlustar á, hvenær og hversu lengi, og finnur mynstur í hlust
 <div class="callout">Gervigreind er þegar tölvur læra af gögnum og nota það sem þær læra til að taka ákvarðanir eða gera spár.</div>
 <p>Það er eins og að kenna tölvunni að þekkja mynstur — til dæmis muninn á ketti og hundi eftir að hafa séð mörg dæmi.</p>
 </div>
+<figure>
 <img class="slide-img" src="img/ai-learning.jpg" alt="">
-<aside class="notes">PROMPT · Surrealism (Magritte): A bowler-hatted figure teaching a floating geometric brain to distinguish a cat from a dog, dreamlike sky background, impossible scale. Palette: #10099F #2DD2C0 #FFA05F on misty #F5F0E8. Oil-paint texture, no text.</aside>
+<figcaption class="caption-prompt">PROMPT · Surrealism (Magritte): A bowler-hatted figure teaching a floating geometric brain to distinguish a cat from a dog, dreamlike sky background, impossible scale. Palette: #10099F #2DD2C0 #FFA05F on misty #F5F0E8. Oil-paint texture, no text, portrait mode.</figcaption>
+</figure>
 </section>
 
 ---
@@ -402,8 +410,10 @@ hvaða lög þú hlustar á, hvenær og hversu lengi, og finnur mynstur í hlust
 </div>
 <p class="callout"><strong>Mikilvægt:</strong> ChatGPT er bara eitt dæmi um spunagreind.</p>
 </div>
+<figure>
 <img class="slide-img" src="img/ai-generative.jpg" alt="">
-<aside class="notes">PROMPT · Futurism: A glowing prompt box at centre exploding outward into streams of text, painted images, musical notes and code — Italian Futurist diagonal energy lines. Palette: #10099F #00FFBA #FAC55B #FC8484 on deep navy #050330. High contrast, motion blur, no text.</aside>
+<figcaption class="caption-prompt">PROMPT · Futurism: A glowing prompt box at centre exploding outward into streams of text, painted images, musical notes and code — Italian Futurist diagonal energy lines. Palette: #10099F #00FFBA #FAC55B #FC8484 on deep navy #050330. High contrast, motion blur, no text, portrait mode.</figcaption>
+</figure>
 </section>
 
 ---
@@ -473,8 +483,10 @@ hvaða lög þú hlustar á, hvenær og hversu lengi, og finnur mynstur í hlust
 </div>
 <p class="callout"><strong>Lykilhugmynd:</strong> ChatGPT býr til texta með því að spá fyrir um líklegt framhald — orð fyrir orð.</p>
 </div>
+<figure>
 <img class="slide-img" src="img/ai-llm-training.jpg" alt="">
-<aside class="notes">PROMPT · Art Deco: An ornate 1930s library where books and webpages spiral upward into a glowing Art Deco archway labelled with neural connections, then emerge as a golden chat bubble. Palette: #10099F #2DD2C0 #FAC55B #F5F0E8 with metallic gold accents. Geometric borders, no text.</aside>
+<figcaption class="caption-prompt">PROMPT · Art Deco: An ornate 1930s library where books and webpages spiral upward into a glowing Art Deco archway labelled with neural connections, then emerge as a golden chat bubble. Palette: #10099F #2DD2C0 #FAC55B #F5F0E8 with metallic gold accents. Geometric borders, no text, portrait mode.</figcaption>
+</figure>
 </section>
 
 ---
@@ -507,9 +519,10 @@ hvaða lög þú hlustar á, hvenær og hversu lengi, og finnur mynstur í hlust
 
 ---
 
-<section>
+<section class="countdown-break" data-countdown-seconds="120">
 <h2>Er ChatGPT að hugsa eða að giska?</h2>
 <p class="sub">Ræðið tvö og tvö í 2 mínútur.</p>
+<div class="countdown-mini" data-countdown-display>2:00</div>
 <div class="three-col">
 <div class="soft yellow"><h3>Hugsa?</h3><p>Er það með skoðanir, vilja eða tilfinningar?</p></div>
 <div class="soft blue"><h3>Giska?</h3><p>Er þetta stærðfræði, mynstur og líkur?</p></div>
