@@ -504,10 +504,10 @@ Hvettu nemendur til að gefa ChatGPT samhengi þegar þeir nota það.
 <div class="slide-content">
 <h2>Hvernig lærir ChatGPT?</h2>
 
-::: {.fa-card cols=1}
-- 1 | Lesa texta | ChatGPT las milljónir bóka, greina og vefsíðna.
-- 2 | Finna mynstur | Það lærði hvaða orð koma oft saman.
-- 3 | Spá fyrir | Nú getur það klárað setningar og svarað spurningum.
+::: {.steps}
+- Lesa texta | ChatGPT las milljónir bóka, greina og vefsíðna.
+- Finna mynstur | Það lærði hvaða orð koma oft saman og leggur það á  minnið.
+- Spá fyrir | Nú getur það klárað setningar og svarað spurningum.
 :::
 
 <p class="callout"><strong>Lykilhugmynd:</strong> ChatGPT skilur ekki tungumál eins og þú. Það <strong>giskar</strong> á hvað er líklegast að fylgja á eftir — orð fyrir orð.</p>
@@ -525,26 +525,43 @@ Við það fór það úr hundruðum gígabæta af texta í eitt líkan sem getu
 </figure>
 ---
 
+## {.img-split}
+
+<div class="slide-content">
 <h2>Það skrifar ekki allt svarið í einu</h2>
-<p class="lead">Það velur eitt næsta orð. Svo notar það nýju setninguna til að velja næsta orð.</p>
-<div class="callout">Ég fór í Bónus að kaupa → mjólk → brauð → og → smjör</div>
+<p class="lead">Það velur <b>eitt</b> næsta orð. Svo notar það nýju setninguna til að velja næsta
+orð.</p>
+::: {.steps}
+- Ég fór í Bónus að kaupa
+- mjólk | Ég fór í Bónus að kaupa mjólk
+- brauð | Ég fór í Bónus að kaupa mjólk, brauð
+- og | Ég fór í Bónus að kaupa mjólk, brauð og
+- smjör| Ég fór í Bónus að kaupa mjólk, brauð og smjör
+:::
 <p class="sub">Textinn sem kemur út verður hluti af næsta inntaki.</p>
+</div>
 <aside class="notes">
 Þetta útskýrir af hverju ChatGPT getur farið úrskeiðis í löngum svörum — hvert orð velur næsta, og ef eitt orð er rangt getur allt farið úr laginu.
 
 Þess vegna er mikilvægt að lesa yfir og athuga — sérstaklega í mikilvægum textum.
 </aside>
+<figure>
+<img class="slide-img" src="img/bonus-gris.jpg" alt="">
+<figcaption class="caption-prompt">Vermeer still life, Bónus piggy bank mascot, wooden table with milk jug, bread loaf, cheese, butter, soft window light from the side, dutch golden age interior, calm composition, realistic textures, limited color accents using #10099F #2DD2C0 #00FFBA #FAC55B #FC8484 #FFA05F applied subtly, warm natural tones dominant, painterly lighting, quiet atmosphere, no text, portrait.</figcaption>
+</figure>
+
 
 ---
 
 <span class="kicker">Kafli 6</span>
 <h2>Af hverju gerir ChatGPT mistök?</h2>
 <p class="lead">Vegna þess að góð spá er ekki alltaf rétt.</p>
-<div class="three-col">
-<div class="card"><h3><i class="fa-solid fa-dice fa-fw box-icon"></i>Það er að spá</h3><p>Ekki alltaf að finna „rétta“ svarið.</p></div>
-<div class="card"><h3><i class="fa-solid fa-volume-high fa-fw box-icon"></i>Það getur hljómað öruggt</h3><p>Jafnvel þegar svarið er rangt.</p></div>
-<div class="card"><h3><i class="fa-solid fa-magnifying-glass fa-fw box-icon"></i>Það þarf að athuga</h3><p>Sérstaklega í heilsu, lögum, peningum og heimildum.</p></div>
-</div>
+:::{.fa-card}
+- dice | Það er að spá | Ekki alltaf að finna „rétta“ svarið.
+- volume-high | Það getur hljómað sannfærandi|Jafnvel þegar svarið er rangt.
+- magnifying-glass | Það þarf að vera gagnrýninn | Sérstaklega í heilsu, lögum, peningum og
+heimildum
+:::
 <aside class="notes">
 ChatGPT hallucinations — það uppfinnur heimildir, nöfn og staðreyndir með fullkomnum öryggi.
 
@@ -560,16 +577,6 @@ Spurðu nemendur um Menti #6 niðurstöðurnar: „Af hverju treystum við ekki 
 ## {#menti-6 data-background-iframe="https://www.menti.com/al86xyveexcw" data-background-interactive=true}
 
 <aside class="notes">Menti #6 · Multiple Choice: Ímyndaðu þér að þú sért veik/ur. Hvort myndir þú treysta til að fá ráðleggingar?</aside>
-
----
-
-{{< pause 120 >}}
-
----
-
-## {#perchance data-background-iframe="https://perchance.org/ai-drawing-generator" data-background-interactive=true}
-
-<aside class="notes">Perchance AI Drawing Generator — láttu nemendur prófa að búa til mynd með gervigreind. Tenging við spunagreind: þetta er dæmi um AI sem býr til nýtt efni út frá textalýsingu. Spurðu: hvað virkar? hvað virkar ekki? hvernig þarf að orða lýsinguna?</aside>
 
 ---
 
@@ -636,7 +643,7 @@ Ef tími leyfir: spurðu hvern og einn hvað þeir spyrja sér fyrst.
 
 ::: {.steps}
 - Gögn | grunnurinn
-- Gagnavísindi | við skilum þeim
+- Gagnavísindi | skilningur á gögnum
 - Gervigreind | tölvur læra
 - Spunagreind | búa til nýtt
 - Ákvarðanir | velja betur
