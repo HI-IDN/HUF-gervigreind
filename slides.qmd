@@ -11,6 +11,9 @@ presenters:
     hi-username: "signyk"
 event-meta: "Háskóli unga fólksins"
 event-date: "10. júní 2026"
+menti_url: "https://www.menti.com/al86xyveexcw"
+menti_display_url: "www.menti.com"
+menti_code: "3628 3395"
 format:
   revealjs:
     theme: white
@@ -31,6 +34,7 @@ format:
       - styles/hi26-reveal.css
       - styles/huf-gervigreind.css
     filters:
+      - _extensions/menti/menti.lua
       - _extensions/card-enum/card-enum.lua
     logo: img/hi/hi_named_logo-is.svg
     footer: "HUF · gervigreind · Helga & Signý"
@@ -52,20 +56,11 @@ Hann starfar einnig sem verkefnastjóri hjá NýMennt á Menntavísindasviði og
 
 ---
 
-## {#menti-login .focus-slide .menti-login}
-
-<div>
-<span class="kicker">Menti</span>
-<h2>Farðu inn áður en við byrjum</h2>
-<p class="menti-url">www.menti.com</p>
-<p class="menti-code">3628 3395</p>
-</div>
-<img class="menti-qr" src="img/menti-qr.png" alt="QR-kóði fyrir Menti">
-<aside class="notes">Hafðu þessa glæru uppi á meðan nemendur koma sér inn á Menti.</aside>
+## {#menti-login .focus-slide .menti-login intro="Skannaðu QR kóðann"}
 
 ---
 
-## {#menti-1 data-background-iframe="https://www.menti.com/al86xyveexcw" data-background-interactive=true}
+## {#menti-1 data-menti="true"}
 
 <aside class="notes">Menti #1 · Word Cloud: Hvað dettur þér fyrst í hug þegar þú heyrir orðið „gervigreind“?</aside>
 
@@ -134,8 +129,44 @@ Bentu á að við förum í þetta í röð í gegnum tímann. Seðju nemendur a
 
 ---
 
+## {.img-split}
+<div class="slide-content">
 <span class="kicker">Kafli 1</span>
 <h2>Hvað eru gögn?</h2>
+<p class="sub">Gögn eru ekki bara tölur í Excel.</p>
+::: {.fa-card}
+- font | Texti | Skilaboð, greinar, bækur
+- image | Myndir | Ljósmyndir, teikningar
+- map-location-dot | Staðsetningar | GPS hnit, kort
+- ruler-horizontal | Mælingar | Hitastig, hraði, þyngd
+- volume-high | Hljóð | Tónlist, tal, hljóðbylgjur
+- video | Myndbönd | Klippur, streymi, kvikmyndir
+:::
+<div class="callout">
+Öll gögn í tölvum eru á endanum umbreytt í bita, þ.e. 0 og 1.
+</div>
+</div>
+
+<aside class="notes">
+Leggðu áherslu: gögn eru ekki bara tölur. Texti úr Snapchat-skilaboðum eru gögn. Mynd sem þú setur á Instagram eru gögn. Rödd þín í símtali eru gögn.
+
+Spurðu: „Hvaða tegund gagna notið þið mest á daginn?" — myndir? tónlist? textar?
+</aside>
+<figure>
+<img class="slide-img" src="img/ai-data-types.jpg" alt="">
+<figcaption class="caption-prompt">Bauhaus/Constructivism: Six bold geometric shapes representing data types — a speech bubble (text), a polaroid frame (photos), a map pin (location), a thermometer (sensor), a soundwave (audio), a film strip (video). Flat Bauhaus composition, primary grid layout. Palette: #10099F #2DD2C0 #FAC55B on #F5F5F5. no text, portrait mode.</figcaption>
+</figure>
+
+---
+
+## {#menti-2 data-menti="true"}
+
+<aside class="notes">Menti #2 · Open Ended: Hvaða gögn heldurðu að síminn þinn safni um þig?</aside>
+
+---
+
+
+<h2>Gögn geta verið alls konar</h2>
 <p class="lead">Gögn eru upplýsingar.</p>
 <p>Í hvert skipti sem við gerum eitthvað í rafrænum heimi verða til gögn.</p>
 
@@ -147,46 +178,13 @@ Bentu á að við förum í þetta í röð í gegnum tímann. Seðju nemendur a
 - location-dot | Hreyfum okkur | Hvar er síminn?
 - gauge-high | Mælum | Hiti, hraði, tími, fjöldi.
 :::
+
+
 <aside class="notes">
 Spurðu: „Hvaða gögn safnar síminn ykkar um ykkur á einum degi?" — láttu nokkra svara.
 
 Áréttaðu: gögn verða til sjálfkrafa, við þurfum ekki alltaf að vera meðvituð um það. Þegar þú hlustar á lag, hreyfir þig, skrifa skilaboð — allt verður að gögnum.
-
-Þetta er kynningin á Menti-spurningu #2 — haltu því til haga.
 </aside>
-
----
-
-## {#menti-2 data-background-iframe="https://www.menti.com/al86xyveexcw" data-background-interactive=true}
-
-<aside class="notes">Menti #2 · Open Ended: Hvaða gögn heldurðu að síminn þinn safni um þig?</aside>
-
----
-
-## {.img-split}
-
-<div class="slide-content">
-<h2>Gögn geta verið margt</h2>
-<p class="sub">Gögn eru ekki bara tölur í Excel.</p>
-
-::: {.fa-card}
-- font | Texti | Skilaboð, greinar, bækur
-- image | Myndir | Ljósmyndir, teikningar
-- map-location-dot | Staðsetningar | GPS hnit, kort
-- ruler-horizontal | Mælingar | Hitastig, hraði, þyngd
-- volume-high | Hljóð | Tónlist, tal, hljóðbylgjur
-- video | Myndbönd | Klippur, streymi, kvikmyndir
-:::
-</div>
-<aside class="notes">
-Leggðu áherslu: gögn eru ekki bara tölur. Texti úr Snapchat-skilaboðum eru gögn. Mynd sem þú setur á Instagram eru gögn. Rödd þín í símtali eru gögn.
-
-Spurðu: „Hvaða tegund gagna notið þið mest á daginn?" — myndir? tónlist? textar?
-</aside>
-<figure>
-<img class="slide-img" src="img/ai-data-types.jpg" alt="">
-<figcaption class="caption-prompt">Bauhaus/Constructivism: Six bold geometric shapes representing data types — a speech bubble (text), a polaroid frame (photos), a map pin (location), a thermometer (sensor), a soundwave (audio), a film strip (video). Flat Bauhaus composition, primary grid layout. Palette: #10099F #2DD2C0 #FAC55B on #F5F5F5. no text, portrait mode.</figcaption>
-</figure>
 
 ---
 
@@ -271,7 +269,7 @@ Spurðu: „Hvað heldið þið að sé erfiðasta skrefið?" — oft er það a
 
 ---
 
-## {#menti-3 data-background-iframe="https://www.menti.com/al86xyveexcw" data-background-interactive=true}
+## {#menti-3 data-menti="true"}
 
 <aside class="notes">Menti #3 · Multiple Choice: Hvort myndir þú frekar nota til að spá fyrir um næsta YouTube-myndband vinar þíns?</aside>
 
@@ -344,7 +342,7 @@ Gott dæmi: gagnavísindi segja „90% nemenda sem mæta illa í september falla
 
 ---
 
-## {#menti-4 data-background-iframe="https://www.menti.com/al86xyveexcw" data-background-interactive=true}
+## {#menti-4 data-menti="true"}
 
 <aside class="notes">Menti #4 · Ranking: Hvar heldurðu að gervigreind sé mest notuð í dag?</aside>
 
@@ -468,7 +466,7 @@ Bíddu eftir Menti-niðurstöðunum áður en þú ferð áfram.
 
 ---
 
-## {#menti-5 data-background-iframe="https://www.menti.com/al86xyveexcw" data-background-interactive=true}
+## {#menti-5 data-menti="true"}
 
 <aside class="notes">Menti #5 · Open Ended: Kláraðu setninguna: „Ég fór að kaupa ...“</aside>
 
@@ -477,7 +475,7 @@ Bíddu eftir Menti-niðurstöðunum áður en þú ferð áfram.
 <h2>Þið voruð ekki að leita að rétta svarinu.</h2>
 <div class="big-words">
 <div class="big-word">smjör</div>
-<div class="big-word">ostur</div>
+<div class="big-word">ost</div>
 </div>
 <div class="statement">Þið voruð að giska á líklegasta næsta orðið.</div>
 <div class="callout">ChatGPT gerir nákvæmlega það sama — og því skiptir samhengi máli:</div>
@@ -574,7 +572,7 @@ Spurðu nemendur um Menti #6 niðurstöðurnar: „Af hverju treystum við ekki 
 
 ---
 
-## {#menti-6 data-background-iframe="https://www.menti.com/al86xyveexcw" data-background-interactive=true}
+## {#menti-6 data-menti="true"}
 
 <aside class="notes">Menti #6 · Multiple Choice: Ímyndaðu þér að þú sért veik/ur. Hvort myndir þú treysta til að fá ráðleggingar?</aside>
 
@@ -601,7 +599,7 @@ Láttu þá svara — þetta er tækifæri til að sjá hvað settist.
 
 ---
 
-## {#menti-7 data-background-iframe="https://www.menti.com/al86xyveexcw" data-background-interactive=true}
+## {#menti-7 data-menti="true"}
 
 <aside class="notes">
 Menti #7 · Open Ended: Hvað er eitt sem þú skilur betur núna en í byrjun?

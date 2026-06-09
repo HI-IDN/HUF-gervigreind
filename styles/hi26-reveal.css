@@ -1134,7 +1134,7 @@
 }
 
 .menti-code {
-  display: inline-block;
+  display: block;
   background: var(--blue);
   color: var(--white);
   font-size: 58px !important;
