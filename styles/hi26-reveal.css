@@ -630,6 +630,22 @@
   line-height: 1.35;
 }
 
+.fa-card-body--centred {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px 22px;
+}
+
+.fa-card-body--centred p {
+  margin: 0;
+  color: var(--body-copy);
+  font-size: 18px !important;
+  font-weight: 400;
+  line-height: 1.35;
+  text-align: left;
+}
+
 .soft {
   background: var(--panel);
   padding: 24px 26px;
@@ -884,14 +900,14 @@
 
 .step-chip strong {
   display: block;
-  font-size: 16px;
+  font-size: 22px;
   font-weight: 800;
   line-height: 1.1;
 }
 
 .step-chip span {
   display: block;
-  font-size: 12px;
+  font-size: 16px;
   opacity: 0.82;
   margin-top: 4px;
   line-height: 1.2;

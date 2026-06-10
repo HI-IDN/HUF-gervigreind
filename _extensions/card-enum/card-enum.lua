@@ -34,14 +34,22 @@ end
 -- Default family is fa-solid.
 local function fa_item_html(_, blocks)
   local text = pandoc.utils.stringify(blocks)
+  -- Try three-part:  icon | title | body
   local icon_part, title, body = text:match("^%s*([^|]+)%s*|%s*([^|]+)%s*|%s*(.+)%s*$")
+  -- Fall back to two-part:  icon | body  (no title)
+  if not icon_part or not body then
+    icon_part, body = text:match("^%s*([^|]+)%s*|%s*(.+)%s*$")
+    title = ""
+  end
 
-  if not icon_part or not title or not body then
+  if not icon_part or not body then
     return '<div class="card fa-card-item">' ..
       '<div class="fa-card-icon"><i class="fa-solid fa-circle-exclamation fa-fw box-icon"></i></div>' ..
-      '<div class="fa-card-body"><h3>Villa</h3><p>Notaðu: icon | titill | texti</p></div>' ..
+      '<div class="fa-card-body"><h3>Villa</h3><p>Notaðu: icon | texti</p></div>' ..
       "</div>"
   end
+
+  title = title and title:gsub("^%s+", ""):gsub("%s+$", "") or ""
 
   -- Detect optional [family] prefix, e.g. [brands] or [regular]
   local family = "fa-solid"
@@ -55,9 +63,17 @@ local function fa_item_html(_, blocks)
   -- Strip any stray fa- prefix left in the icon name
   icon = icon:gsub("^fa%-%a+%s+", ""):gsub("^fa%-", ""):gsub("%s+$", "")
 
+  local body_html
+  if title == "" then
+    -- No title: body text centred, normal weight, larger
+    body_html = '<div class="fa-card-body fa-card-body--centred"><p>' .. html_escape(body) .. "</p></div>"
+  else
+    body_html = '<div class="fa-card-body"><h3>' .. html_escape(title) .. "</h3><p>" .. html_escape(body) .. "</p></div>"
+  end
+
   return '<div class="card fa-card-item">' ..
     '<div class="fa-card-icon"><i class="' .. family .. ' fa-' .. html_escape(icon) .. ' fa-fw box-icon"></i></div>' ..
-    '<div class="fa-card-body"><h3>' .. html_escape(title) .. "</h3><p>" .. html_escape(body) .. "</p></div>" ..
+    body_html ..
     "</div>"
 end
 

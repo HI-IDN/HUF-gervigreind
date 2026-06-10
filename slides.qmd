@@ -114,12 +114,12 @@ Við förum í gegnum hvert skref á eigin glæru síðar.
 <h2>Eftir tímann eigið þið að geta...</h2>
 
 ::: {.fa-card}
-- 1 | | Útskýrt hvað gögn eru.
-- 2 | | Lýst hvað gagnavísindi eru.
-- 3 | | Skilið muninn á gagnavísindum og gervigreind.
-- 4 | | Útskýrt í grófum dráttum hvernig ChatGPT virkar.
-- 5 | | Skilið að spunagreind er aðeins ein tegund gervigreindar.
-- 6 | | Spurt gagnrýninna spurninga um svör frá gervigreind.
+- 1 | Útskýrt hvað gögn eru.
+- 2 | Lýst hvað gagnavísindi eru.
+- 3 | Skilið muninn á gagnavísindum og gervigreind.
+- 4 | Útskýrt í grófum dráttum hvernig ChatGPT virkar.
+- 5 | Skilið að spunagreind er aðeins ein tegund gervigreindar.
+- 6 | Spurt gagnrýninna spurninga um svör frá gervigreind.
 :::
 <aside class="notes">
 Farðu stuttlega yfir markmið — ekki dvelja lengi hér.
@@ -221,21 +221,6 @@ Markmiðið er skilningur og betri ákvarðanataka — ekki bara tölur.
 - map | Google Maps | Greinir umferðargögn frá milljónum bíla í rauntíma og finnur hraðustu leið fyrir þig.
 - [brands] snapchat | Snapchat | Andlitsgreining þekkir lögun andlits þíns á millisekúndu til að beita síum nákvæmlega.
 :::
-<aside class="notes">
-Farðu í gegnum dæmin og spurðu hvort nemendur þekki þau.
-
-Veðurspá: milljónir gagna á sekúndu frá veðurstöðvum um allan heim — við fáum nákvæma 10 daga spá.
-
-Spotify: Discover Weekly er búinn til eingöngu með gagnavísindum. Af 100 milljónum laga finnur kerfið þau 30 sem þú vilt heyra.
-
-YouTube: 70% af öllu horftíma kemur frá ráðleggingakerfinu — kerfið velur næsta myndband á 0,2 sekúndum.
-
-Google Maps: spáir umferð út frá gögnum frá milljónum bíla í rauntíma — og sögulegum mynstrum.
-
-Snapchat: kortleggur 68 punkta á andlitinu þínu og uppfærir 30 sinnum á sekúndu — þess vegna fylgja síurnar þér.
-
-Spurðu nemendur: „Hafið þið einhvern tíma velt því fyrir ykkur hvernig YouTube veit hvað þið viljið sjá?"
-</aside>
 
 ---
 
@@ -375,13 +360,6 @@ spillis.
 - calendar-days | Vaktaplön | Gögn um þörf, frí og reglur hjálpa til við að raða fólki á
 vaktir.
 :::
-<aside class="notes">
-Fiskvinnsla: myndavélar skanna fiskinn, gervigreind þekkir bestu skurðarlínuna og vélin sker nákvæmlega — minna fer til spillis.
-
-Ferðaþjónusta: þegar þú lítur á myndband af foss á Instagram gæti kerfið nú þegar verið að mæla með Íslandsferð við þig — eftir viðveru, verð og áhuga þinn.
-
-Vaktaplön: stór sjúkrahús nota slík kerfi til þess að raða hjúkrunarfræðingum og læknum þannig að alltaf sé rétt menntað fólk til staðar.
-</aside>
 
 ---
 
