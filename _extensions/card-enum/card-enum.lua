@@ -20,6 +20,27 @@ local function html_escape(text)
   return text
 end
 
+-- Render **bold** in a plain string to HTML (after html_escape is defined)
+local function md_inline(s)
+  local parts = {}
+  local i = 1
+  while i <= #s do
+    local b1 = s:find("%*%*", i)
+    if not b1 then
+      table.insert(parts, html_escape(s:sub(i))); break
+    end
+    table.insert(parts, html_escape(s:sub(i, b1 - 1)))
+    local b2 = s:find("%*%*", b1 + 2)
+    if b2 then
+      table.insert(parts, "<strong>" .. html_escape(s:sub(b1 + 2, b2 - 1)) .. "</strong>")
+      i = b2 + 2
+    else
+      table.insert(parts, html_escape(s:sub(b1))); break
+    end
+  end
+  return table.concat(parts)
+end
+
 -- Renders a numbered card (card-enum)
 local function item_html(number, blocks)
   return '<div class="card enum-card">' ..
@@ -68,7 +89,7 @@ local function fa_item_html(_, blocks)
     -- No title: body text centred, normal weight, larger
     body_html = '<div class="fa-card-body fa-card-body--centred"><p>' .. html_escape(body) .. "</p></div>"
   else
-    body_html = '<div class="fa-card-body"><h3>' .. html_escape(title) .. "</h3><p>" .. html_escape(body) .. "</p></div>"
+    body_html = '<div class="fa-card-body"><h3>' .. md_inline(title) .. "</h3><p>" .. html_escape(body) .. "</p></div>"
   end
 
   return '<div class="card fa-card-item">' ..

@@ -99,6 +99,7 @@
 
 .kicker {
   display: inline-block;
+  align-self: flex-start;
   background: var(--panel);
   color: var(--blue);
   font-size: 12px;

@@ -131,7 +131,7 @@ Bentu á að við förum í þetta í röð í gegnum tímann. Seðju nemendur a
 
 ## {.img-split}
 <div class="slide-content">
-<span class="kicker">Kafli 1</span>
+<span class="kicker">Kafli 1 · Gögn</span>
 <h2>Hvað eru gögn?</h2>
 <p class="sub">Gögn eru ekki bara tölur í Excel.</p>
 ::: {.fa-card}
@@ -191,7 +191,7 @@ Spurðu: „Hvaða gögn safnar síminn ykkar um ykkur á einum degi?" — látt
 ## {.img-split}
 
 <div class="slide-content">
-<span class="kicker">Kafli 2</span>
+<span class="kicker">Kafli 2 · Gagnavísindi</span>
 <h2>Hvað eru gagnavísindi?</h2>
 <div class="callout">Gagnavísindi snúast um að nota gögn til að skilja heiminn betur —
 finna mynstur, draga ályktanir og taka betri ákvarðanir.</div>
@@ -214,12 +214,15 @@ Markmiðið er skilningur og betri ákvarðanataka — ekki bara tölur.
 
 <h2>Gagnavísindi í raunveruleikanum</h2>
 ::: {.fa-card}
-- cloud-sun-rain | Veðurspá | Veðurstöðvar og gervihnettir mæla hitastig, vind og loftþrýsting. Gögnin eru greind til að spá fyrir um veðrið.
-- [brands] spotify | Spotify | Spotify skoðar hvaða lög þú hlustar á, hvenær og hversu lengi, og finnur mynstur í hlustun.
-- gamepad | Leikjahönnun | Hönnuðir skoða hvar leikmenn festast, hvar þeir hætta og hvað þeim finnst skemmtilegt.
-- [brands] youtube | YouTube | Mælir horftíma, líkingar og hlutfall til að spá fyrir um hvaða myndband þú vilt sjá næst.
-- map | Google Maps | Greinir umferðargögn frá milljónum bíla í rauntíma og finnur hraðustu leið fyrir þig.
-- [brands] snapchat | Snapchat | Andlitsgreining þekkir lögun andlits þíns á millisekúndu til að beita síum nákvæmlega.
+- [brands] spotify | **Spotify Wrapped** | Greinir hvað þú hlustir á mest yfir árið og sýnir þér tölfræði um hlustunarmynstrin þín.
+- cloud-sun-rain | Veðurspá | Veðurfræðingar greina gögn frá veðurstöðvum og gervihnöttum til að skilja hvernig veðrið þróast.
+- gamepad | Leikjahönnun | Hönnuðir skoða gögn um hvar leikmenn festast og hætta til að finna hvað þarf að bæta.
+- [brands] youtube | YouTube Analytics | Myndbandsframleiðendur sjá nákvæmlega hvar áhorfendur hætta að horfa.
+- map | Umferðargreining | Skipulagsfræðingar skoða umferðargögn til að skilja hvar þéttast er og hvenær.
+- heart-pulse | Heilbrigðisþjónusta | Læknar greina sjúkdómsgögn til að skilja hvaða meðferð virkar best fyrir hvern sjúkling.
+- [brands] amazon | Netverslun | Verslanir greina kaupmynstur til að skilja hvað selst best og hvenær tilboð virka.
+- fish | Fiskvinnsla | Gæðastjórar skoða framleiðslugögn til að finna hvar í ferlinu sóun verður til.
+- graduation-cap | Skóli | Kennarar skoða einkunnir og ástundun til að skilja hvaða nemendur þurfa á aðstoð að halda.
 :::
 
 ---
@@ -267,7 +270,7 @@ Spurðu: „Hvað heldið þið að sé erfiðasta skrefið?" — oft er það a
 ## {.img-split}
 
 <div class="slide-content">
-<span class="kicker">Kafli 3</span>
+<span class="kicker">Kafli 3 · Gervigreind</span>
 <h2>Hvað er gervigreind?</h2>
 <div class="callout">Gervigreind er þegar tölvur læra af gögnum og nota það sem þær læra til að taka ákvarðanir eða gera spár.</div>
 <p>Það er eins og að kenna tölvunni að þekkja mynstur — til dæmis muninn á ketti og hundi eftir að hafa séð mörg dæmi.</p>
@@ -336,10 +339,13 @@ Gott dæmi: gagnavísindi segja „90% nemenda sem mæta illa í september falla
 <h2>Gervigreind er regnhlífarhugtak</h2>
 :::{.fa-card}
 - chart-simple | Spálíkön | Spá fyrir um eftirspurn, veður eða hegðun.
-- camera-retro | Myndgreining | Greina myndir, t.d. andlit, ketti, bíla eða sjúkdóma
 - route | Bestun| Finna góða leið, gott plan eða góða röðun.
-- language | Málgreining | Skilja texta, þýða, flokka og svara.
 - flask-vial | Hermun | Prófa „hvað ef?“ án þess að prófa í raunheimi.
+- camera-retro | Myndgreining | Greina myndir, t.d. andlit, ketti, bíla eða sjúkdóma
+- microphone | Hljóðgreining | Siri, Alexa og raddskráning þekkja töluð orð og breyta þeim í texta.
+- robot | Sjálfvirkni | Tölvur læra með því að prófa og fá umbun með styrkingarnámi — eins og sjálfkeyrandi bílar og leikjaAI.
+- thumbs-up | Ráðleggingakerfi | Netflix, Spotify og Amazon mæla með efni út frá því sem þú hefur séð, hlustað og keypt.
+- language | Málgreining | Skilja texta, þýða, flokka og svara.
 - wand-magic-sparkles | Spunagreind | Búa til texta, myndir, hljóð, kóða eða myndband
 :::
 <aside class="notes">
@@ -354,11 +360,15 @@ Bíddu með Menti #4 niðurstöðurnar til að bera þær saman við þetta.
 
 <h2>Gervigreind í raunveruleikanum</h2>
 :::{.fa-card}
-- fish | Fiskvinnsla | Gögn úr myndavélum hjálpa vélum að skera fisk þannig að minna fari til
-spillis.
-- mountain-sun | Ferðaþjónusta | Gögn um áhuga, tíma og staðsetningu hjálpa til við að mæla með ferðum.
-- calendar-days | Vaktaplön | Gögn um þörf, frí og reglur hjálpa til við að raða fólki á
-vaktir.
+- [brands] spotify | **Discover Weekly** | Líkanið lærir smekk þinn og velur sjálfkrafa 30 lög sem þér líkar vel — án þess að þú biðjir um það.
+- cloud-sun-rain | Veðurspá | Gervigreindarlíkan spáir sjálfkrafa nákvæmlega fyrir um veðrið 10 daga fram í tímann.
+- gamepad | Leikjahönnun | Gervigreind aðlagar erfiðleikastig sjálfkrafa í rauntíma eftir því hvernig þér gengur.
+- [brands] youtube | YouTube tillögur | Líkanið velur sjálfkrafa næsta myndband til að halda þér á síðunni eins lengi og mögulegt er.
+- map | Google Maps | Spáir fyrir umferðartafir og reiknar bestu leið sjálfkrafa — uppfærst á nokkurra sekúndna fresti.
+- heart-pulse | Heilbrigðisþjónusta | AI-líkan þekkir sjúkdóma úr röntgenmyndum — oft nákvæmar og hraðar en læknar gera það.
+- [brands] amazon | Amazon tillögur | „Viðskiptavinir sem keyptu þetta keyptu líka…" — líkanið lærir kaupmynstur og mælir sjálfkrafa með.
+- fish | Fiskvinnsla | Vél lærir af framleiðslugögnum og skerar fiskinn sjálfkrafa þannig að minnst fari til spillis.
+- graduation-cap | Nám | Gervigreindartól eins og ChatGPT geta veitt nemendum persónulegt umhverfi til að spyrja spurninga, fá ítarlegri skýringar og ræða efnið á sínum hraða.
 :::
 
 ---
@@ -370,7 +380,7 @@ vaktir.
 ## {.img-split}
 
 <div class="slide-content">
-<span class="kicker">Kafli 4</span>
+<span class="kicker">Kafli 4 · Spunagreind</span>
 <h2>Hvað er spunagreind?</h2>
 <p class="lead">Spunagreind er ein tegund gervigreindar sem býr til nýtt efni.</p>
 <div class="callout">Spunagreind sýnir okkur líka hvað var í gögnunum.</div>
@@ -379,7 +389,7 @@ vaktir.
 - palette | Myndir | Nýjar myndir út frá lýsingum.
 - code | Annað efni | Tónlist, kóði, myndbönd og fleira.
 :::
-<p class="tool-row-label">Þekkt dæmi — tæki sem hafa breytt heiminum:</p>
+<p class="tool-row-label">Vinsæl gervigreindartól:</p>
 <div class="tool-row">
 <span class="tool-chip">ChatGPT</span>
 <span class="tool-chip">Copilot</span>
@@ -411,7 +421,6 @@ Spurðu: „Hefur einhver ykkar notað AI til að búa til mynd eða tónlist?" 
 ## {.img-split}
 
 <div class="slide-content">
-<span class="kicker">Líking: Dýrategundir</span>
 <h2>Spunagreind ≠ gervigreind</h2>
 <p class="lead">Hundur, köttur og hestur eru allir <strong>dýr</strong> — en þau eru mismunandi tegundir.</p>
 <p>Á sama hátt eru til <strong>mismunandi tegundir gervigreindar</strong>. Ein þeirra er spunagreind.</p>
@@ -529,7 +538,6 @@ orð.</p>
 
 ---
 
-<span class="kicker">Kafli 6</span>
 <h2>Af hverju gerir ChatGPT mistök?</h2>
 <p class="lead">Vegna þess að góð spá er ekki alltaf rétt.</p>
 :::{.fa-card}
