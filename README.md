@@ -5,7 +5,7 @@ Kennsluefni fyrir Háskóla unga fólksins um gervigreind, gagnavísindi, spunag
 Glærurnar eru skrifaðar í Quarto:
 
 - [`slides.qmd`](slides.qmd) — aðalglærurnar, hannaðar sem RevealJS kynning í HÍ26 hönnunarstaðli
-- [`styles/hi26-reveal.css`](styles/hi26-reveal.css) — HÍ26 stíll fyrir RevealJS glærurnar
+- [`styles/huf-gervigreind.css`](styles/huf-gervigreind.css) — sérsniðnir hlutar fyrir þessar glærur
 - [`menti.md`](menti.md) — yfirlit yfir Menti-spurningar og hvaða Mentimeter question type á að velja
 - [`img/`](img/) — lógó, að AI-generated myndir
 
@@ -13,9 +13,9 @@ Glærurnar eru skrifaðar í Quarto:
 
 Breyttu [`slides.qmd`](slides.qmd). Glærur eru aðskildar með `---`.
 
-Stíllinn er skilgreindur í [`styles/hi26-reveal.css`](styles/hi26-reveal.css). `slides.qmd` vísar í skrána í Quarto YAML með `css: styles/hi26-reveal.css`.
+Glærurnar nota [HÍ Quarto-þemað](https://github.com/tungufoss/quarto-haskoli-islands-theme/releases/tag/v0.2.0) v0.2.0.
 
-Þar eru HÍ26 litirnir og Jost letrið:
+HÍ litirnir og Jost letrið:
 
 - aðallitur HÍ: `#10099F`
 - stoðlitir: `#2DD2C0`, `#00FFBA`, `#FAC55B`, `#FC8484`, `#FFA05F`

@@ -12,18 +12,26 @@ local function has_class(h, cls)
   return false
 end
 
+local function escape(s)
+  s = tostring(s)
+  return (s:gsub("&", "&amp;"):gsub("<", "&lt;"):gsub(">", "&gt;"):gsub('"', "&quot;"))
+end
+
 function Pandoc(doc)
   local meta = doc.meta
 
-  local MENTI_URL         = stringify(meta["menti_url"])         or nil
-  local MENTI_DISPLAY_URL = stringify(meta["menti_display_url"]) or "www.menti.com"
-  local MENTI_CODE        = stringify(meta["menti_code"])        or ""
-  local MENTI_QR          = stringify(meta["menti_qr"])          or "img/menti-qr.png"
+  -- Settings from a `menti:` map (url, display-url, code, qr), falling back
+  -- to the flat menti_url / menti_display_url / menti_code / menti_qr keys
+  local nested = meta["menti"] or {}
+  local function setting(key, flat_key)
+    return stringify(nested[key]) or stringify(meta[flat_key])
+  end
 
-  io.stderr:write("[menti.lua] code='" .. MENTI_CODE .. "' url='" .. MENTI_DISPLAY_URL .. "'\n")
+  local MENTI_URL         = setting("url", "menti_url")
+  local MENTI_DISPLAY_URL = escape(setting("display-url", "menti_display_url") or "www.menti.com")
+  local MENTI_CODE        = escape(setting("code", "menti_code") or "")
+  local MENTI_QR          = escape(setting("qr", "menti_qr") or "img/menti-qr.png")
 
-  local STYLE_URL  = 'style="font-size:24px;font-weight:600;color:#5f5f5f;text-align:center;margin:0;"'
-  local STYLE_CODE = 'class="big-word" style="text-align:center;white-space:nowrap;display:block;"'
   local STYLE_LOGIN_CODE = 'class="menti-code"'
 
   doc = doc:walk({
@@ -38,9 +46,10 @@ function Pandoc(doc)
         end
 
         local panel = '<div class="menti-panel">' ..
-          '<img style="width:175px;height:175px;object-fit:contain;display:block;" src="' .. MENTI_QR .. '" alt="QR">' ..
-          '<div ' .. STYLE_URL  .. '>' .. MENTI_DISPLAY_URL .. '</div>' ..
-          '<div ' .. STYLE_CODE .. '>' .. tostring(MENTI_CODE) .. '</div>' ..
+          '<div class="menti-panel-url">' .. MENTI_DISPLAY_URL .. '</div>' ..
+          '<img class="menti-panel-qr" src="' .. MENTI_QR .. '" alt="QR">' ..
+          '<div class="menti-panel-url">' .. MENTI_DISPLAY_URL .. '</div>' ..
+          '<div class="menti-panel-code">' .. tostring(MENTI_CODE) .. '</div>' ..
           '</div>'
 
         return pandoc.Blocks { h, pandoc.RawBlock("html", panel) }
@@ -53,7 +62,7 @@ function Pandoc(doc)
 
         local html = '<div>' ..
           '<span class="kicker">Menti</span>' ..
-          '<h2>' .. intro .. '</h2>' ..
+          '<h2>' .. escape(intro) .. '</h2>' ..
           '<div class="menti-url">' .. MENTI_DISPLAY_URL .. '</div>' ..
           '<div ' .. STYLE_LOGIN_CODE .. '>' .. tostring(MENTI_CODE) .. '</div>' ..
           '</div>' ..

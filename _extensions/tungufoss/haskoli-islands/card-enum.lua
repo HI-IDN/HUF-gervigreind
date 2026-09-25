@@ -20,79 +20,177 @@ local function html_escape(text)
   return text
 end
 
--- Render **bold** in a plain string to HTML (after html_escape is defined)
+-- Render **bold**, _emph_, and `code` in a plain string to HTML
 local function md_inline(s)
-  local parts = {}
+  local result = {}
   local i = 1
   while i <= #s do
     local b1 = s:find("%*%*", i)
-    if not b1 then
-      table.insert(parts, html_escape(s:sub(i))); break
+    local e1 = s:find("_", i)
+    local c1 = s:find("`", i)
+    local k1 = s:find("%[", i)
+    -- pick earliest marker
+    local next_marker
+    if b1 and (not e1 or b1 <= e1) and (not c1 or b1 <= c1) and (not k1 or b1 <= k1) then next_marker = "bold"
+    elseif e1 and (not c1 or e1 <= c1) and (not k1 or e1 <= k1) then next_marker = "emph"
+    elseif c1 and (not k1 or c1 <= k1) then next_marker = "code"
+    elseif k1 then next_marker = "icon" end
+
+    if not next_marker then
+      table.insert(result, html_escape(s:sub(i))); break
     end
-    table.insert(parts, html_escape(s:sub(i, b1 - 1)))
-    local b2 = s:find("%*%*", b1 + 2)
-    if b2 then
-      table.insert(parts, "<strong>" .. html_escape(s:sub(b1 + 2, b2 - 1)) .. "</strong>")
-      i = b2 + 2
+
+    if next_marker == "bold" then
+      table.insert(result, html_escape(s:sub(i, b1 - 1)))
+      local b2 = s:find("%*%*", b1 + 2)
+      if b2 then
+        table.insert(result, "<strong>" .. html_escape(s:sub(b1 + 2, b2 - 1)) .. "</strong>")
+        i = b2 + 2
+      else
+        table.insert(result, html_escape(s:sub(b1))); break
+      end
+    elseif next_marker == "emph" then
+      table.insert(result, html_escape(s:sub(i, e1 - 1)))
+      local e2 = s:find("_", e1 + 1)
+      if e2 then
+        table.insert(result, '<em class="emph">' .. html_escape(s:sub(e1 + 1, e2 - 1)) .. "</em>")
+        i = e2 + 1
+      else
+        table.insert(result, html_escape(s:sub(e1))); break
+      end
+    elseif next_marker == "code" then
+      table.insert(result, html_escape(s:sub(i, c1 - 1)))
+      local c2 = s:find("`", c1 + 1)
+      if c2 then
+        table.insert(result, "<code>" .. html_escape(s:sub(c1 + 1, c2 - 1)) .. "</code>")
+        i = c2 + 1
+      else
+        table.insert(result, html_escape(s:sub(c1))); break
+      end
     else
-      table.insert(parts, html_escape(s:sub(b1))); break
+      -- [icon-name] → FA icon inheriting current text colour
+      local _, kend, ic = s:find("%[([%w%-]+)%]", k1)
+      if ic then
+        table.insert(result, html_escape(s:sub(i, k1 - 1)))
+        table.insert(result, '<i class="fa-solid fa-' .. ic .. '" aria-hidden="true"></i>')
+        i = kend + 1
+      else
+        table.insert(result, html_escape(s:sub(i))); break
+      end
     end
   end
-  return table.concat(parts)
+  return table.concat(result)
+end
+
+-- Renders formula text: escapes HTML but expands [icon-name] → FA icon
+local function render_formula(s)
+  local out = {}
+  local i = 1
+  while i <= #s do
+    local b, e, icon = s:find("%[([%w%-]+)%]", i)
+    if b then
+      table.insert(out, html_escape(s:sub(i, b - 1)))
+      table.insert(out, '<i class="fa-solid fa-' .. icon .. '"></i>')
+      i = e + 1
+    else
+      table.insert(out, html_escape(s:sub(i)))
+      break
+    end
+  end
+  return table.concat(out)
 end
 
 -- Renders a numbered card (card-enum)
 local function item_html(number, blocks)
-  return '<div class="card enum-card">' ..
+  return '<div class="enum-card">' ..
     "<h3>" .. tostring(number) .. "</h3>" ..
     '<div class="card-enum-body">' .. render_blocks(blocks) .. "</div>" ..
     "</div>"
 end
 
 -- Renders an FA-icon card (fa-card)
--- Expects list item text in the form:  icon-name | Title | Body text
+-- Expects list item text in the form:  icon-name | Title | Body text | * item1 | * item2 …
 -- Optional family prefix:  [brands] spotify | …  or  [regular] heart | …
 -- Default family is fa-solid.
 local function fa_item_html(_, blocks)
   local text = pandoc.utils.stringify(blocks)
-  -- Try three-part:  icon | title | body
-  local icon_part, title, body = text:match("^%s*([^|]+)%s*|%s*([^|]+)%s*|%s*(.+)%s*$")
-  -- Fall back to two-part:  icon | body  (no title)
-  if not icon_part or not body then
-    icon_part, body = text:match("^%s*([^|]+)%s*|%s*(.+)%s*$")
-    title = ""
+
+  -- Split on | into all segments
+  local segs = {}
+  for seg in (text .. "|"):gmatch("([^|]*)|") do
+    table.insert(segs, seg:match("^%s*(.-)%s*$"))
   end
 
-  if not icon_part or not body then
+  if #segs < 2 then
     return '<div class="card fa-card-item">' ..
       '<div class="fa-card-icon"><i class="fa-solid fa-circle-exclamation fa-fw box-icon"></i></div>' ..
-      '<div class="fa-card-body"><h3>Villa</h3><p>Notaðu: icon | texti</p></div>' ..
+      '<div class="fa-card-body"><h3>Error</h3><p>Use: icon | title | body</p></div>' ..
       "</div>"
   end
 
-  title = title and title:gsub("^%s+", ""):gsub("%s+$", "") or ""
+  local icon_part = segs[1]
+  local title    = #segs >= 3 and segs[2] or ""
+  local subtitle = ""
+  local body     = #segs >= 3 and segs[3] or segs[2]
 
-  -- Detect optional [family] prefix, e.g. [brands] or [regular]
+  -- Optional subtitle: 4+ segments where seg[3] starts with ~ (pre) or / (post)
+  -- Or: 4 segments where seg[3] looks like a subtitle (starts with _ or is short)
+  -- Simpler: if 4+ segments and seg[3] starts with "/" treat as subtitle before body
+  if #segs >= 4 then
+    local maybe_sub = segs[3]
+    if maybe_sub:match("^/") then
+      subtitle = maybe_sub:sub(2):match("^%s*(.-)%s*$")
+      body = segs[4]
+    end
+  end
+
+  -- Collect any remaining | * item segments as bullet list items
+  -- and | ~ text segments as formula lines
+  local list_items = {}
+  local formula_lines = {}
+  local start = (#segs >= 4 and subtitle ~= "") and 5 or (#segs >= 3 and 4 or 3)
+  for i = start, #segs do
+    local seg = segs[i]
+    local bullet  = seg:match("^%*%s*(.+)$") or seg:match("^%-+%s*(.+)$")
+    local formula = seg:match("^~%s*(.+)$")
+    if bullet and bullet ~= "" then
+      table.insert(list_items, "<li>" .. md_inline(bullet) .. "</li>")
+    elseif formula and formula ~= "" then
+      table.insert(formula_lines, '<p class="card-formula">' .. render_formula(formula) .. "</p>")
+    end
+  end
+
+  -- Detect optional prefix: [brands]/[regular] = font family, [hi-red] etc = color class
   local family = "fa-solid"
-  local icon = icon_part:gsub("^%s+", ""):gsub("%s+$", "")
+  local color_class = ""
+  local icon = icon_part
   local prefix, rest = icon:match("^%[([^%]]+)%]%s*(.+)$")
   if prefix then
-    family = "fa-" .. prefix
-    icon   = rest
+    if prefix:match("^hi%-") then
+      color_class = prefix   -- e.g. "hi-red", "hi-pink", "hi-teal"
+    else
+      family = "fa-" .. prefix
+    end
+    icon = rest
   end
-
-  -- Strip any stray fa- prefix left in the icon name
   icon = icon:gsub("^fa%-%a+%s+", ""):gsub("^fa%-", ""):gsub("%s+$", "")
 
+  local list_html = #list_items > 0
+    and '<ul class="fa-card-list">' .. table.concat(list_items) .. "</ul>"
+    or ""
+  local formula_html = table.concat(formula_lines)
+
+  local sub_html = subtitle ~= "" and ('<p class="fa-card-subtitle">' .. md_inline(subtitle) .. "</p>") or ""
   local body_html
   if title == "" then
-    -- No title: body text centred, normal weight, larger
-    body_html = '<div class="fa-card-body fa-card-body--centred"><p>' .. html_escape(body) .. "</p></div>"
+    body_html = '<div class="fa-card-body fa-card-body--centred"><p>' .. md_inline(body) .. "</p>" .. list_html .. formula_html .. "</div>"
   else
-    body_html = '<div class="fa-card-body"><h3>' .. md_inline(title) .. "</h3><p>" .. html_escape(body) .. "</p></div>"
+    local p = body ~= "" and ("<p>" .. md_inline(body) .. "</p>") or ""
+    body_html = '<div class="fa-card-body"><h3>' .. md_inline(title) .. "</h3>" .. sub_html .. p .. list_html .. formula_html .. "</div>"
   end
 
-  return '<div class="card fa-card-item">' ..
+  local item_class = color_class ~= "" and ("fa-card-item " .. color_class) or "fa-card-item"
+  return '<div class="' .. item_class .. '">' ..
     '<div class="fa-card-icon"><i class="' .. family .. ' fa-' .. html_escape(icon) .. ' fa-fw box-icon"></i></div>' ..
     body_html ..
     "</div>"
@@ -113,6 +211,17 @@ end
 local function render_card_rows(div, item_renderer, wrapper_class, row_class)
   -- Allow per-block column override via  ::: {.card-enum cols=4}
   local cols = tonumber(div.attributes and div.attributes["cols"]) or 3
+  -- A zero, negative or fractional count would never advance the loop below
+  cols = math.max(1, math.floor(cols))
+
+  -- Pass through any extra classes on the div (e.g. .colorful)
+  local extra = {}
+  for _, cls in ipairs(div.classes) do
+    if cls ~= wrapper_class then
+      table.insert(extra, cls)
+    end
+  end
+  local all_classes = #extra > 0 and (wrapper_class .. " " .. table.concat(extra, " ")) or wrapper_class
 
   -- Collect every rendered item in order
   local all_items = {}
@@ -144,7 +253,7 @@ local function render_card_rows(div, item_renderer, wrapper_class, row_class)
   end
 
   return pandoc.RawBlock("html",
-    '<div class="' .. wrapper_class .. '">' .. table.concat(rows, "\n") .. "</div>")
+    '<div class="' .. all_classes .. '">' .. table.concat(rows, "\n") .. "</div>")
 end
 
 -- Splits a list of inlines at the first bare "|" Str token

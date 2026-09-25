@@ -7,41 +7,26 @@ subtitle-highlight: "Hvernig gervigreind og gagnavísindi hjálpa okkur að skil
 presenters:
   - name: "Dr. Helga Ingimundardóttir"
     hi-username: "helgaingim"
+    office: "VR-II"
   - name: "Signý Kristín Sigurjónsdóttir"
     hi-username: "signyk"
+    office: "VR-II"
 event-meta: "Háskóli unga fólksins"
 event-date: "10. júní 2026"
 menti_url: "https://www.menti.com/al86xyveexcw"
 menti_display_url: "www.menti.com"
 menti_code: "3628 3395"
+watermark: img/hi/hi_logo.svg
+favicon: img/hi/favicon.svg
 format:
-  revealjs:
-    theme: white
-    transition: slide
-    background-transition: fade
+  haskoli-islands-revealjs:
     hash: true
-    controls: true
     controls-layout: edges
     controls-back-arrows: visible
-    slide-number: true
-    progress: true
-    title-slide: false
-    width: 1280
-    height: 720
-    margin: 0.04
     css:
-      - styles/colors.css
-      - styles/hi26-reveal.css
       - styles/huf-gervigreind.css
-    filters:
-      - _extensions/menti/menti.lua
-      - _extensions/card-enum/card-enum.lua
     logo: img/hi/hi_named_logo-is.svg
     footer: "HUF · gervigreind · Helga & Signý"
-    title-slide-attributes:
-      class: title-slide
-    include-in-header: partials/header-includes.inc
-    include-after-body: partials/body-after.inc
 ---
 
 {{< hi-title >}}
@@ -643,3 +628,17 @@ til hvers.</p>
 
 Leggðu áherslu á gagnrýna hugsun: skilningur er mikilvægari en blind traust. Spurðu alltaf: „Hverjir söfnuðu þessum gögnum? Til hvers eru þau notuð?"
 </aside>
+
+---
+
+## Spurningar? {.focus-slide}
+
+::: {.two-col}
+::: {}
+![](img/vr2.jpg){.contact-photo fig-alt="VR-II, Háskóli Íslands"}
+:::
+
+::: {}
+{{< contact-card >}}
+:::
+:::
